@@ -1,0 +1,8 @@
+*.DS_Store
+*.pyc
+*__pycache__
+*config.py
+*.log
+*.pot
+*db.sqlite3
+*runserver

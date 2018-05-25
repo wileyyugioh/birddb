@@ -1,0 +1,62 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'birddb/style.css' %}" />
+<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
+
+<div class="header-bar">
+    <ul>
+        <li><a class="title" href="/">Birdb</a></li>
+        <li class="header-bar-bottom">by wiley y.</li>
+        <li class="header-bar-empty"></li>
+        <li><a href="/birddb/bird_partial">Contribute</a></li>
+        <li><a href="/about/">About</a></li>
+    </ul>
+</div>
+<div class="main">
+    <h1 class="top-center">Help us identify new birds!</h1>
+    {% if bird_ranks.all %}
+    <table class="bird-table">
+        {% for bird in bird_ranks %}
+        <tr class="bird-entry">
+            <td><a class="bird-count">{{ forloop.counter }}</a></td>
+            <td><span class="bird-name">{{ bird.get_a_name }}</span></td>
+            <td><span class="bird-sci">{{ bird.sci_name }}</span></td>
+            <td>
+                <img src="{% if bird.web_data.img %} {{ bird.web_data.img }} {% else %} {% static 'birddb/unknownbird.png' %} {% endif %}" class="bird-img" />
+            </td>
+            <td>
+                {% if bird.web_data.call %}
+                <!-- add audio button using javascript here! -->
+                <audio class="audio-player" preload="none" controls >
+                    <source src="{{ bird.web_data.call }}" type="audio/mp3" />
+                </audio>
+                {% else %}
+                <img src="{% static 'birddb/nosound.png' %}" class="bird-call" />
+                {% endif %}
+            </td>
+            <td class="bird-error-cell">
+                <i class="bird-error-no-js">Please enable JavaScript to submit an error report</i>
+                <form class="bird-error" action="{% url 'birddb:bird_poll' bird.id %}" method="post" target="dummy" style="display: none;">
+                    {% csrf_token %}
+                    <span>The color of the bird is:</span>
+                    <div>
+                        <select name="color">
+                            {% for color in COLOR_NAMES %}
+                            <option value="{{ color }}">{{ color }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div><input type="submit" class="bird-error-submit" /></div>
+                </form>
+                <i class="bird-error-thanks bird-error-center" style="display: none;">Thanks for contributing!</i>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <div><h1>Success! No partial birds found!</h1></div>
+    <div><img src="{% static 'birddb/birdhappy.png' %}" class="bird-img"/></div>
+    {% endif %}
+</div>
+<iframe width="0" height="0" border="0" style="display: none;" name="dummy" id="dummy"></iframe>
+<script src="{% static 'birddb/audio.js' %}"></script>
+<script src="{% static 'birddb/partialform.js' %}"></script>

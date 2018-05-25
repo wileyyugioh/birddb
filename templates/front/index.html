@@ -1,0 +1,56 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'front/style.css' %}" />
+<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
+
+<div class="header-bar">
+    <ul>
+        <li><a class="title" href="/">Birdb</a></li>
+        <li class="header-bar-bottom">by wiley y.</li>
+        <li class="header-bar-empty"></li>
+        <li><a href="/birddb/bird_partial">Contribute</a></li>
+        <li><a href="/about/">About</a></li>
+    </ul>
+</div>
+<div class="main">
+    <div>
+        <img class="center-img" src="{% static 'front/birdgreet.jpg' %}" />
+    </div>
+        <h2 class="location-bar">
+            <label><input type="radio" name="search-type" value="latlon" id="latlon" checked="checked"><div>Coordinates</div></label>
+            <label id="loc-space" style="display: none;"><div class="div-space"></div></label>
+            <label style="display: none;"><input type="radio" name="search-type" value="search" id="search" disabled><div>Search</div></label>
+        </h2>
+    <form id="bird-form" class="bird-form center" action="{% url 'birddb:bird_ranks' %}" method="get">
+        <div class="form-text">
+            <input type="text" id="form-lat" name="lat" placeholder="Lat." maxlength="10" autocomplete="off" required />
+            <input type="text" id="form-lon" name="lon" placeholder="Lon." maxlength="10" autocomplete="off" required />
+        </div>
+        <div class="form-text form-search" style="display: none;">
+            <input type="text" id="form-search" placeholder="Search for a location" maxlength="40" autocomplete="off" />
+            <div id="dropdown"></div>
+        </div>
+        <h2>Color</h2>
+        <div class="color-bar radio-bar">
+            <label><input type="radio" name="color" value="red" required /><span class="red-input"></span></label>
+            <label><input type="radio" name="color" value="orange" /><span class="orange-input"></span></label>
+            <label><input type="radio" name="color" value="yellow" /><span class="yellow-input"></span></label>
+            <label><input type="radio" name="color" value="green" /><span class="green-input"></span></label>
+            <label><input type="radio" name="color" value="blue" /><span class="blue-input"></span></label>
+            <label><input type="radio" name="color" value="violet" /><span class="violet-input"></span></label>
+            <label><input type="radio" name="color" value="brown" /><span class="brown-input"></span></label>
+            <label><input type="radio" name="color" value="grey" /><span class="grey-input"></span></label>
+            <label><input type="radio" name="color" value="white" /><span class="white-input"></span></label>
+            <label><input type="radio" name="color" value="black" /><span class="black-input"></span></label>
+        </div>
+        <h2>Size Range</h2>
+        <div class="size-bar radio-bar">
+            <label><input type="radio" name="size" value="5" required /><span>3-5 in</span></label>
+            <label><input type="radio" name="size" value="17" /><span>5-9 in</span></label>
+            <label><input type="radio" name="size" value="31" /><span>9-16 in</span></label>
+            <label><input type="radio" name="size" value="60" /><span>16-32 in</span></label>
+            <label><input type="radio" name="size" value="131" /><span>32-72 in</span></label>
+        </div>
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+<script src="{% static 'front/get_location.js' %}" ></script>

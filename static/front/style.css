@@ -1,0 +1,283 @@
+body {
+    font-family: "Nunito", sans-serif;
+    margin: 0em;
+}
+
+.main {
+    margin-top: 4em;
+}
+
+.header-bar {
+    background-color: #FFFF66;
+    position: fixed;
+    top: 0em;
+    width: 100%;
+}
+
+.header-bar ul {
+    display: table;
+    list-style-type: none;
+    height: 1px;
+    margin: 0% 5%;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.header-bar ul li {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.header-bar ul li:nth-child(n+4) a {
+    padding: .5em .5em;
+}
+
+.header-bar ul li:nth-child(n+4):hover {
+    background-color: #f2f200;
+}
+
+.header-bar ul li a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-size: 1.5em;
+}
+
+.header-bar ul li a:visited {
+    color: inherit;
+}
+
+.header-bar ul li a:hover {
+    color: #6A5ACD;
+}
+
+.header-bar-empty {
+    width: 4.9em;
+}
+
+.header-bar-bottom {
+    display: table-cell;
+    vertical-align: bottom !important;
+}
+
+.title {
+    font-size: 2.5em !important;
+}
+
+.center {
+    text-align: center;
+}
+
+.center-img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.legal {
+    white-space: pre-wrap;
+    margin: 0% 5%;
+    font-family: Times New Roman;
+}
+
+.legal-title {
+    margin-top: 3em;
+    font-family: Times New Roman;
+}
+
+h1, .bird-form h2, .bird-form input[type="submit"] {
+    margin-top: .5em;
+    margin-left: 0em;
+    margin-right: 0em;
+    margin-bottom: 0em;
+}
+
+.bird-form input[type="submit"] {
+    margin-top: 1.2em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+.bird-form input[type="submit"] {
+    font-size: 1.5em;
+    text-align: center;
+    text-decoration: none;
+    background-color: #B0C4DE;
+    border: none;
+    cursor: pointer;
+}
+
+.bird-form input[type="submit"]:hover {
+    background-color: #6495ED;
+}
+
+.form-text input {
+    height: 2em;
+    width: 10em;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.form-text:focus::-webkit-input-placeholder { 
+    color:transparent; 
+}
+
+.form-text:focus:-moz-placeholder { 
+    color:transparent;
+}
+
+.form-search input {
+    width: 20.2em;
+    text-align: left;
+}
+
+.location-bar {
+    margin: .5em 0em;
+    text-align: center;
+}
+
+.location-bar label div {
+    display: inline-block;
+    width: 7em;
+    cursor: pointer;
+}
+
+.location-bar label .div-space {
+    width: 4em;
+}
+
+.location-bar input[type="radio"] ~ div {
+    background-color: #C0D5F9;
+}
+
+.location-bar input[type="radio"]:hover ~ div {
+    background-color: #93BCFF;
+}
+
+.location-bar input[type="radio"]:checked ~ div {
+    background-color: #4F91FF;
+}
+
+#dropdown {
+    position: absolute;
+    text-align: left;
+    background-color: white;
+    width: 30em;
+    left: 0em;
+    right: 0em;
+    margin: 0em auto;
+}
+
+.dropdown-content {
+    display: block;
+    border: 1px solid black;
+    border-bottom-width: 0px;
+    cursor: pointer;
+}
+
+.dropdown-content:last-child {
+    border-bottom-width: 1px;
+}
+
+.dropdown-content:hover {
+    background-color: #DCDCDC;
+}
+
+.radio-bar input[type="radio"], .location-bar input[type="radio"] {
+    display: none;
+}
+
+.radio-bar label span {
+    display: inline-block;
+    padding: .75em 1.5em;
+    width: 4.5em;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.radio-bar {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.size-bar label span {
+    background-color: #ADD8E6;
+}
+
+.size-bar label span:hover {
+    background-color: #87CEFA;
+}
+
+.size-bar input[type="radio"]:checked ~ span {
+    background-color: #00bfff;
+}
+
+.color-bar label {
+    display: inline-block;
+    padding: .3em .3em;
+}
+
+.color-bar label span {
+    height: 3em;
+    width: 3em;
+    padding: 0em 0em;
+    outline: 1px solid black;
+    border: 1px solid transparent;
+}
+
+.color-bar label span:hover {
+    outline: 1px solid #91E3FF;
+}
+
+.color-bar input[type="radio"]:checked ~ span {
+    outline: 1px solid #00BFFF;
+    border: 1px solid #00BFFF;
+}
+
+.color-bar label span.red-input {
+    background-color: red;
+}
+
+.color-bar label span.orange-input {
+    background-color: orange;
+}
+
+.color-bar label span.yellow-input {
+    background-color: yellow;
+}
+
+.color-bar label span.blue-input {
+    background-color: blue;
+}
+
+.color-bar label span.green-input {
+    background-color: green;
+}
+
+.color-bar label span.violet-input {
+    background-color: violet;
+}
+
+.color-bar label span.brown-input {
+    background-color: brown;
+}
+
+.color-bar label span.grey-input {
+    background-color: grey;
+}
+
+.color-bar label span.white-input {
+    background-color: white;
+}
+
+.color-bar label span.black-input {
+    background-color: black;
+}
