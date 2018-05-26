@@ -19,7 +19,7 @@
         <tr class="bird-entry">
             <td><a class="bird-count">{{ forloop.counter }}</a></td>
             <td><span class="bird-name">{{ bird.get_a_name }}</span></td>
-            <td><span class="bird-sci">{{ bird.sci_name }}</span></td>
+            <td><span class="bird-sci">{{ bird.get_sci_name }}</span></td>
             <td>
                 <img src="{% if bird.web_data.img %} {{ bird.web_data.img }} {% else %} {% static 'birddb/unknownbird.png' %} {% endif %}" class="bird-img" />
             </td>
