@@ -1,15 +1,28 @@
-from requests import get, Response
-from re import search
+import re
 
-# TODO: What happens when an invalid article is given?
+from requests import get, Response
+from urllib.parse import quote
+
+try:
+    from .helpers import convertToHttps
+except ImportError:
+    from helpers import convertToHttps
+
 
 class WikipediaScraper:
     """ Uses the Wikipedia API to get summary and data """
+    sub_href_regex = re.compile('href="([^\"]+)"').sub
 
     def __init__(self):
         # Cache the last request
         self._prev_url = None
         self._prev_data = None
+
+    def _replace_href_with_https(raw_text):
+        """ Converts href into https equivalent """
+        def format(matcharoni):
+            return 'href="' + convertToHttps(matcharoni.group(1)) + '"'
+        return WikipediaScraper.sub_href_regex(format, raw_text)
 
     def _summary_base(self, title_name, base_url):
         """ The base function for getting a summary """
@@ -47,7 +60,7 @@ class WikipediaScraper:
         BASE_URL = "https://en.wikipedia.org/w/api.php?format=json&redirects=1&action=query&prop=extracts&explaintext=&titles="
         raw_page = self._summary_base(title_name, BASE_URL)["extract"]
 
-        r = search(custom_regex, raw_page)
+        r = re.search(custom_regex, raw_page)
 
         if not r:
             return None
@@ -71,7 +84,8 @@ class WikipediaScraper:
 
         wiki_data = next(iter(json_data["query"]["pages"].values()))
 
-        file_name = wiki_data["pageimage"]
+        file_name = quote(wiki_data["pageimage"])
+
         custom_license_url = LICENSE_URL.format(file_name)
 
         response = get(custom_license_url)
@@ -80,13 +94,27 @@ class WikipediaScraper:
         license_data = next(iter(json_data["query"]["pages"].values()))["imageinfo"][0]["extmetadata"]
 
         try:
-            artist = license_data["Attribution"]["value"]
+            try:
+                artist = license_data["Attribution"]["value"]
+            except KeyError:
+                artist = license_data["Artist"]["value"]
+
+            artist = WikipediaScraper._replace_href_with_https(artist)
+
+            # max_len is defined in charfield to be ~400
+            MAX_LEN = 400
+            if len(artist) > MAX_LEN: raise ValueError("Artist too long") 
+        except Exception:
+            artist = "<a href='https://commons.wikimedia.org/wiki/File:{}'>Unknown Author</a>".format(file_name)
+
+        try:
+            license_name = license_data["LicenseShortName"]["value"]
+            license_href = convertToHttps(license_data["LicenseUrl"]["value"])
         except KeyError:
-            artist = license_data["Artist"]["value"]
+            license_name = license_data["LicenseShortName"]["value"]
+            license_href = ""
 
-        license_url = license_data["LicenseUrl"]["value"]
-
-        return wiki_data["thumbnail"]["source"], artist, license_url
+        return wiki_data["thumbnail"]["source"], artist, license_name, license_href
 
 
 # Debug
@@ -94,7 +122,9 @@ if __name__ == "__main__":
     ws = WikipediaScraper()
     title = ws.get_title("Gymnogyps californianus")
     print(title)
-    img, art, lic = ws.get_image("Gymnogyps californianus")
+    #img, art, lic, href = ws.get_image("Gymnogyps californianus")
+    img, art, lic, href = ws.get_image("Calidris canutus")
     print(img)
     print(art)
     print(lic)
+    print(href)

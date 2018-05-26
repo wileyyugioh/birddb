@@ -80,6 +80,7 @@ class BirdAccess:
                                          img=extra.img,
                                          img_rec=extra.img_rec,
                                          img_lic=extra.img_lic,
+                                         img_href=extra.img_href,
                                          call=extra.call,
                                          call_rec=extra.call_rec,
                                          call_lic=extra.call_lic

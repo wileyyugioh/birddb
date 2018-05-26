@@ -21,7 +21,23 @@
             <td><span class="bird-sci">{{ bird.get_sci_name }}</span></td>
             <!-- score {{ score }} -->
             <td>
-                <img src="{% if bird.webdata.img %} {{ bird.webdata.img }} {% else %} {% static 'birddb/unknownbird.png' %} {% endif %}" class="bird-img" />
+                <div class="bird-img-container">
+                    {% if bird.webdata.img %} 
+                    <img src="{{ bird.webdata.img }}" class="bird-img" />
+                    <i class="citation">
+                        <div class="citation-author">Author: {% autoescape off %}{{ bird.webdata.img_rec}}{% endautoescape %}</div>
+                        <div class="citation-license">
+                            {% if bird.webdata.img_href %}
+                            <a href="{{ bird.webdata.img_href }}">License: {{ bird.webdata.img_lic }}</a>
+                            {% else %}
+                            <p>License: {{ bird.webdata.img_lic }}</p>
+                            {% endif %}
+                        </div>
+                    </i>
+                    {% else %}
+                    <img src="{% static 'birddb/unknownbird.png' %}" class="bird-img" />
+                    {% endif %}
+                <div>
             </td>
             <td>
                 {% if bird.webdata.call %}
@@ -29,6 +45,10 @@
                 <audio class="audio-player" preload="none" controls >
                     <source src="{{ bird.webdata.call }}" type="audio/mp3" />
                 </audio>
+                <i class="citation">
+                    <div class="citation-author">Recorder: {{ bird.webdata.call_rec}}</div>
+                    <div class="citation-license"><a href="{{ bird.webdata.call_lic }}">License</a></div>
+                </i>
                 {% else %}
                 <img src="{% static 'birddb/nosound.png' %}" class="bird-call" />
                 {% endif %}

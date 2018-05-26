@@ -120,11 +120,31 @@ a:visited {
     background-color: #DCDCDC;
 }
 
-.bird-img {
+.bird-img-container {
     display: block;
-    height: 10em;
     margin-left: auto;
     margin-right: auto;
+}
+
+.bird-img {
+    height: 10em;
+}
+
+.citation {
+    display: block;
+    font-size: .75em;
+}
+
+.citation-author { 
+    text-align: left !important;
+}
+
+.citation-license {
+    text-align: right !important;
+}
+
+.citation a {
+    text-decoration: underline;
 }
 
 .bird-call {

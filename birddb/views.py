@@ -39,8 +39,9 @@ def bird_ranks(request):
     except TooLongError:
         # Took too long, so show error page
         return redirect("birddb:bird_error")
-    except:
+    except Exception as e:
         # Unknown error
+        raise e
         return HttpResponseBadRequest("Unknown error")
 
 

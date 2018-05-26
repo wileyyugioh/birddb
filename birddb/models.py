@@ -103,8 +103,11 @@ class WebData(models.Model):
     # Wikipedia image author
     img_rec = models.CharField(max_length=400, blank=True)
 
-    # Wikipedia image license
-    img_lic = models.CharField(max_length=400, blank=True)
+    # Wikipedia image license name
+    img_lic = models.CharField(max_length=20, blank=True)
+
+    # Wikipedia image license href
+    img_href = models.CharField(max_length=400, blank=True)
 
     # xeno-canto bird call url
     call = models.CharField(max_length=400, blank=True)

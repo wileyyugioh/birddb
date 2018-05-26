@@ -2,10 +2,10 @@ import re
 
 try:
     from . import colornames
-    from .scrapers import gbif, usgs, xenocanto, wikipedia
+    from .scrapers import usgs, xenocanto, wikipedia
 except ImportError:
     import colornames
-    from scrapers import gbif, usgs, xenocanto, wikipedia
+    from scrapers import usgs, xenocanto, wikipedia
 
 
 class BirdScraper_Not_A_Bird(ValueError):
@@ -44,10 +44,11 @@ class BirdData:
 
 class BirdDataExtra:
     """ Returned by BirdScraper.scrape_extra(?) """
-    def __init__(self, img, img_rec, img_lic, call, rec, license):
+    def __init__(self, img, img_rec, img_lic, img_href, call, rec, license):
         self.img = img if img else ""
         self.img_rec = img_rec if img_rec else ""
         self.img_lic = img_lic if img_lic else ""
+        self.img_href = img_href if img_href else ""
         self.call = call if call else ""
         self.call_rec = rec if rec else ""
         self.call_lic = license if license else ""
@@ -177,11 +178,12 @@ class BirdScraper:
         xs = xenocanto.XenocantoScraper()
 
         try:
-            img, img_rec, img_lic = ws.get_image(sci_name)
+            img, img_rec, img_lic, img_href = ws.get_image(sci_name)
         except:
             img = None
             img_rec = None
             img_lic = None
+            img_href = None
 
         try:
             call, rec, lic  = xs.get_by_name(sci_name)
@@ -189,7 +191,7 @@ class BirdScraper:
             call = None
             rec = None
             lic = None
-        return BirdDataExtra(img, img_rec, img_lic, call, rec, lic)
+        return BirdDataExtra(img, img_rec, img_lic, img_href, call, rec, lic)
 
 
 # Debug

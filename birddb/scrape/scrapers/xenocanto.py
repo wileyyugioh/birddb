@@ -1,5 +1,10 @@
 from requests import get, Response
 
+try:
+    from .helpers import convertToHttps
+except ImportError:
+    from helpers import convertToHttps
+
 class XenocantoScraper:
     """ Uses the Xenocanto API to snag audio """
     URL_PATH = "https://www.xeno-canto.org/api/2/recordings?query="
@@ -12,10 +17,8 @@ class XenocantoScraper:
         recordings = json_data["recordings"]
 
         # Return first recording audio url
-        # Remove first two characters (predicted '//')
         if recordings:
-            # Append a 'https://' for good measure
-            return "https://" + recordings[0]["file"][2:], recordings[0]["rec"], "https://" + recordings[0]["lic"][2:]
+            return convertToHttps(recordings[0]["file"][2:]), recordings[0]["rec"], convertToHttps(recordings[0]["lic"][2:])
         return None, None, None
 
 
