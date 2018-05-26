@@ -22,8 +22,8 @@ class BirdSearcher:
 
     def search(self, sd):
         """ Searches the databases for most likely birds """
-        if not sd.valid():
-            raise SearchError("Invalid SearchData")
+
+        # Assume search data already verified
 
         # Get a list of birds given the geographical location
         birds_geo = self._eb.get_recent_obs(sd.lat, sd.long)

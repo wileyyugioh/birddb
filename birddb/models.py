@@ -95,6 +95,10 @@ class Bird(models.Model):
         """ Returns a single common name """
         return capwords(self.name.split(",")[0], " ")
 
+    def get_sci_name(self):
+        """ Returns formatted scientific name """
+        return self.sci_name.capitalize()
+
     def get_genus_str(self):
         """ Returns the genus string """
         return self.genus.split()[0]

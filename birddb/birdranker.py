@@ -1,7 +1,7 @@
 try:
-    from .scrape.colornames import color_distance_norm
+    from .scrape.colornames import color_distance_norm, SIMPLIFIED_COLORS_NAMES
 except ImportError:
-    from scrape.colornames import color_distance_norm
+    from scrape.colornames import color_distance_norm, SIMPLIFIED_COLORS_NAMES
 
 from math import log
 
@@ -16,11 +16,17 @@ class SearchData:
 
     def valid(self):
         """ Returns True if all data is not None """
-        return bool((self.lat and
-                     self.long and
-                     self.color and
-                     self.size
-                   ))
+        return (bool((self.lat and
+                      self.long and
+                      self.color and
+                      self.size
+                    )) and
+                (-90 <= self.lat <= 90) and
+                (-180 <= self.long <= 180) and
+                (self.color in SIMPLIFIED_COLORS_NAMES) and
+                (self.size > 0)
+               )
+
 
 
 class BirdRanker:

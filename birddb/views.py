@@ -19,8 +19,8 @@ def bird_ranks(request):
     MAX_SIZE = 20
 
     try:
-        lat = request.GET["lat"]
-        lon = request.GET["lon"]
+        lat = float(request.GET["lat"])
+        lon = float(request.GET["lon"])
         color = request.GET["color"]
         size = float(request.GET["size"])
     except KeyError:
@@ -30,10 +30,8 @@ def bird_ranks(request):
 
     sd = SearchData(lat, lon, color, size)
 
-    # TODO: ADD ACTUAL VERIFICATION CODE TO SEARCHDATA
-    # IF NOT PROPERLY VERIFIED, PEOPLE CAN BREAK CODE WITH INPUT
     if not sd.valid():
-        return HttpResponseBadRequest("Error, incomplete data")
+        return HttpResponseBadRequest("Error, incomplete/incorrect data")
 
     try:
         bird_rankings = bs.search(sd)
@@ -41,6 +39,9 @@ def bird_ranks(request):
     except TooLongError:
         # Took too long, so show error page
         return redirect("birddb:bird_error")
+    except:
+        # Unknown error
+        return HttpResponseBadRequest("Unknown error")
 
 
 def bird_poll(request, bird_id):
@@ -59,7 +60,7 @@ def bird_poll(request, bird_id):
 
 def bird_partial(request):
     """ Show all partial birds """
-    return render(request, "birddb/bird_partial.html", {"bird_ranks": Bird.objects.filter(color__iexact=None, birdpollcolor__isnull=True), "COLOR_NAMES": SIMPLIFIED_COLORS_NAMES})
+    return render(request, "birddb/bird_partial.html", {"bird_ranks": Bird.objects.filter(color__exact=None, birdpollcolor__isnull=True)[:20], "COLOR_NAMES": SIMPLIFIED_COLORS_NAMES})
 
 
 def bird_error(request):

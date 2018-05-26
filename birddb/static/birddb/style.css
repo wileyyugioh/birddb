@@ -1,10 +1,19 @@
-html, body, .main, .bird-table {
-    height: 100%;
-}
-
 body {
     font-family: "Nunito", sans-serif;
     margin: 0em;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    color: inherit;
+}
+
+.in-block {
+    display: inline-block;
 }
 
 .top-center {
@@ -17,6 +26,7 @@ body {
 .main {
     margin: 0 5%;
     margin-top: 3.5em;
+    text-align: center;
 }
 
 .main div {
@@ -56,13 +66,8 @@ body {
 .header-bar ul li a {
     display: block;
     text-align: center;
-    text-decoration: none;
     color: black;
     font-size: 1.5em;
-}
-
-.header-bar ul li a:visited {
-    color: inherit;
 }
 
 .header-bar ul li a:hover {
@@ -90,6 +95,7 @@ body {
     text-align: center;
     border-collapse: collapse;
     width: 100%;
+    height: 100%;
 }
 
 .bird-entry {

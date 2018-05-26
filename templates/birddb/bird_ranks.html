@@ -12,12 +12,13 @@
     </ul>
 </div>
 <div class="main">
+    {% if bird_ranks %}
     <table class="bird-table">
         {% for bird, score in bird_ranks %}
         <tr class="bird-entry">
             <td><a class="bird-count">{{ forloop.counter }}</a></td>
             <td><span class="bird-name">{{ bird.get_a_name }}</span></td>
-            <td><span class="bird-sci">{{ bird.sci_name }}</span></td>
+            <td><span class="bird-sci">{{ bird.get_sci_name }}</span></td>
             <!-- score {{ score }} -->
             <td>
                 <img src="{% if bird.web_data.img %} {{ bird.web_data.img }} {% else %} {% static 'birddb/unknownbird.png' %} {% endif %}" class="bird-img" />
@@ -57,6 +58,11 @@
         </tr>
         {% endfor %}
     </table>
+    {% else %}
+    <h1>Hmmm. We couldn't find any birds at that location.</h1>
+    <img src="{% static 'birddb/hmmbird.png' %}">
+    <div><a href="/"><h2 class="bird-error-report in-block">Try again?</h2></a></div>
+    {% endif %}
 </div>
 <iframe width="0" height="0" border="0" style="display: none;" name="dummy" id="dummy"></iframe>
 <script src="{% static 'birddb/audio.js' %}"></script>
