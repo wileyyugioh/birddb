@@ -39,7 +39,8 @@
                     {% csrf_token %}
                     <span>The color of the bird is:</span>
                     <div>
-                        <select name="color">
+                        <select name="color" required>
+                            <option value="" selected disabled>---</option>
                             {% for color in COLOR_NAMES %}
                             <option value="{{ color }}">{{ color }}</option>
                             {% endfor %}

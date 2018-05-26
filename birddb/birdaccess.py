@@ -46,8 +46,7 @@ class BirdAccess:
             data = bs.scrape(sci_name)
             if not data.success():
                 raise EntryError("Failed to scrape")
-        except Exception as e:
-            print(e)
+        except Exception:
             InvalidBird.objects.get_or_create(sci_name=sci_name)
             return None
 
