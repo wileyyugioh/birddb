@@ -189,3 +189,7 @@ a:visited {
     cursor: pointer;
     padding: .1em .5em;
 }
+
+.bird-error-report:hover {
+    background-color: #739BCE;
+}
