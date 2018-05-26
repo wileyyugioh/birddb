@@ -40,22 +40,6 @@ class Genus(models.Model):
             self.num_entries = models.F("num_entries") - 1
 
 
-class WebData(models.Model):
-    """ Stores various web data """
-
-    # Wikipedia img url
-    img = models.CharField(max_length=400, blank=True)
-
-    # xeno-canto bird call url
-    call = models.CharField(max_length=400, blank=True)
-
-    # xeno-canto bird call recorder
-    call_rec = models.CharField(max_length=400, blank=True)
-
-    # xeno-canto bird call license url
-    call_lic = models.CharField(max_length=400, blank=True)
-
-
 class Bird(models.Model):
     """ Represents a bird in the database """
 
@@ -78,9 +62,6 @@ class Bird(models.Model):
     # Ex. 114.3
     # Null means the size couldn't be found
     size = models.FloatField(blank=True, null=True)
-
-    # Web data
-    web_data = models.OneToOneField(WebData, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.sci_name
@@ -108,6 +89,31 @@ class Bird(models.Model):
     def get_genus_str(self):
         """ Returns the genus string """
         return self.genus.split()[0]
+
+
+class WebData(models.Model):
+    """ Stores various web data """
+
+    # Web data
+    bird = models.OneToOneField(Bird, on_delete=models.CASCADE, primary_key=True)
+
+    # Wikipedia img url
+    img = models.CharField(max_length=400, blank=True)
+
+    # Wikipedia image author
+    img_rec = models.CharField(max_length=400, blank=True)
+
+    # Wikipedia image license
+    img_lic = models.CharField(max_length=400, blank=True)
+
+    # xeno-canto bird call url
+    call = models.CharField(max_length=400, blank=True)
+
+    # xeno-canto bird call recorder
+    call_rec = models.CharField(max_length=400, blank=True)
+
+    # xeno-canto bird call license url
+    call_lic = models.CharField(max_length=400, blank=True)
 
 
 class BirdPollColor(models.Model):

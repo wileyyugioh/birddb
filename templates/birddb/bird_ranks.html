@@ -21,13 +21,13 @@
             <td><span class="bird-sci">{{ bird.get_sci_name }}</span></td>
             <!-- score {{ score }} -->
             <td>
-                <img src="{% if bird.web_data.img %} {{ bird.web_data.img }} {% else %} {% static 'birddb/unknownbird.png' %} {% endif %}" class="bird-img" />
+                <img src="{% if bird.webdata.img %} {{ bird.webdata.img }} {% else %} {% static 'birddb/unknownbird.png' %} {% endif %}" class="bird-img" />
             </td>
             <td>
-                {% if bird.web_data.call %}
+                {% if bird.webdata.call %}
                 <!-- add audio button using javascript here! -->
                 <audio class="audio-player" preload="none" controls >
-                    <source src="{{ bird.web_data.call }}" type="audio/mp3" />
+                    <source src="{{ bird.webdata.call }}" type="audio/mp3" />
                 </audio>
                 {% else %}
                 <img src="{% static 'birddb/nosound.png' %}" class="bird-call" />

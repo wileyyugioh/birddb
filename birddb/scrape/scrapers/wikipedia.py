@@ -63,6 +63,7 @@ class WikipediaScraper:
     def get_image(self, title_name, size=400):
         """ Returns the url of thumbnail image """
         BASE_URL = "https://en.wikipedia.org/w/api.php?action=query&redirects=1&titles={}&prop=pageimages&format=json&pithumbsize={}"
+        LICENSE_URL = "https://en.wikipedia.org/w/api.php?action=query&redirects=1&titles=File:{}&prop=imageinfo&iiprop=extmetadata&format=json"
         custom_url = BASE_URL.format(title_name, size)
 
         response = get(custom_url)
@@ -70,7 +71,22 @@ class WikipediaScraper:
 
         wiki_data = next(iter(json_data["query"]["pages"].values()))
 
-        return wiki_data["thumbnail"]["source"]
+        file_name = wiki_data["pageimage"]
+        custom_license_url = LICENSE_URL.format(file_name)
+
+        response = get(custom_license_url)
+        json_data = response.json()
+
+        license_data = next(iter(json_data["query"]["pages"].values()))["imageinfo"][0]["extmetadata"]
+
+        try:
+            artist = license_data["Attribution"]["value"]
+        except KeyError:
+            artist = license_data["Artist"]["value"]
+
+        license_url = license_data["LicenseUrl"]["value"]
+
+        return wiki_data["thumbnail"]["source"], artist, license_url
 
 
 # Debug
@@ -78,5 +94,7 @@ if __name__ == "__main__":
     ws = WikipediaScraper()
     title = ws.get_title("Gymnogyps californianus")
     print(title)
-    img = ws.get_image("Gymnogyps californianus")
+    img, art, lic = ws.get_image("Gymnogyps californianus")
     print(img)
+    print(art)
+    print(lic)

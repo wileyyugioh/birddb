@@ -17,7 +17,6 @@ class BirdSearcher:
     def __init__(self):
         self._eb = EbirdScraper()
         self._br = BirdRanker()
-        # DEBUG
         self._ba = BirdAccess()
 
     def search(self, sd):

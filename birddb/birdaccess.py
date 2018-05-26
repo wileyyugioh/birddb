@@ -68,20 +68,22 @@ class BirdAccess:
             try:
                 genus = Genus.objects.get_or_create(name=data.genus)[0]
 
-                web_data = WebData.objects.get_or_create(img=extra.img,
-                                                         call=extra.call,
-                                                         call_rec=extra.call_rec,
-                                                         call_lic=extra.call_lic
-                                                        )[0]
-
                 # Create a new bird object
                 bird = Bird.objects.get_or_create(name=",".join(data.common_names),
                                                   sci_name=data.sci_name,
                                                   genus=genus,
                                                   color=data.color,
                                                   size=data.get_size_avg(),
-                                                  web_data=web_data
                                                  )[0]
+
+                web_data = WebData.objects.get_or_create(bird=bird,
+                                         img=extra.img,
+                                         img_rec=extra.img_rec,
+                                         img_lic=extra.img_lic,
+                                         call=extra.call,
+                                         call_rec=extra.call_rec,
+                                         call_lic=extra.call_lic
+                                        )[0]
 
                 # Add the birdonym
                 BirdReference.objects.get_or_create(sci_name=sci_name,
@@ -105,7 +107,7 @@ class BirdAccess:
             for i, name in enumerate(sci_names):
                 birds[i] = soft_get_bird(name, bs)
         else:
-            tp = ThreadPool()
+            tp = ThreadPool(5)
             async_result = tp.map_async(self._thread_func, sci_names)
             try:
                 birds = async_result.get(timeout=10)
