@@ -44,9 +44,11 @@ class BirdData:
 
 class BirdDataExtra:
     """ Returned by BirdScraper.scrape_extra(?) """
-    def __init__(self, img, call):
+    def __init__(self, img, call, rec, license):
         self.img = img if img else ""
         self.call = call if call else ""
+        self.call_rec = rec if rec else ""
+        self.call_lic = license if license else ""
 
 
 class BirdScraper:
@@ -174,15 +176,16 @@ class BirdScraper:
 
         try:
             img = ws.get_image(sci_name)
-        except Exception:
+        except:
             img = None
 
-        # Append a 'https://' for good measure
-        call = xs.get_by_name(sci_name)
-        if call:
-            call = "https://" + call
-
-        return BirdDataExtra(img, call)
+        try:
+            call, rec, lic  = xs.get_by_name(sci_name)
+        except:
+            call = None
+            rec = None
+            lic = None
+        return BirdDataExtra(img, call, rec, lic)
 
 
 # Debug

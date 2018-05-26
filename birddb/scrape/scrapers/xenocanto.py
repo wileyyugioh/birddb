@@ -14,11 +14,12 @@ class XenocantoScraper:
         # Return first recording audio url
         # Remove first two characters (predicted '//')
         if recordings:
-            return recordings[0]["file"][2:]
-        return None
+            # Append a 'https://' for good measure
+            return "https://" + recordings[0]["file"][2:], recordings[0]["rec"], "https://" + recordings[0]["lic"][2:]
+        return None, None, None
 
 
 if __name__ == "__main__":
     xs = XenocantoScraper()
-    audio_url = xs.get_by_name("Apus apus")
-    print(audio_url)
+    audio_url, rec, lic = xs.get_by_name("Apus apus")
+    print(audio_url, rec, lic)

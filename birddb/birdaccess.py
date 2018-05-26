@@ -69,7 +69,9 @@ class BirdAccess:
                 genus = Genus.objects.get_or_create(name=data.genus)[0]
 
                 web_data = WebData.objects.get_or_create(img=extra.img,
-                                                         call=extra.call
+                                                         call=extra.call,
+                                                         call_rec=extra.call_rec,
+                                                         call_lic=extra.call_lic
                                                         )[0]
 
                 # Create a new bird object

@@ -43,11 +43,17 @@ class Genus(models.Model):
 class WebData(models.Model):
     """ Stores various web data """
 
-    # img url
+    # Wikipedia img url
     img = models.CharField(max_length=400, blank=True)
 
-    # bird call url
+    # xeno-canto bird call url
     call = models.CharField(max_length=400, blank=True)
+
+    # xeno-canto bird call recorder
+    call_rec = models.CharField(max_length=400, blank=True)
+
+    # xeno-canto bird call license url
+    call_lic = models.CharField(max_length=400, blank=True)
 
 
 class Bird(models.Model):
@@ -74,7 +80,7 @@ class Bird(models.Model):
     size = models.FloatField(blank=True, null=True)
 
     # Web data
-    web_data = models.ForeignKey(WebData, on_delete=models.CASCADE)
+    web_data = models.OneToOneField(WebData, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.sci_name
