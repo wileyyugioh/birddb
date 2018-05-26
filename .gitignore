@@ -5,4 +5,4 @@
 *.pot
 *db.sqlite3
 *runserver
-/static
+static/
