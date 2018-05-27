@@ -1,19 +1,28 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'birddb/errorstyle.css' %}" />
-<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" href="{% static 'birddb/style.css' %}" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
+    </head>
 
-<div class="header-bar">
-    <ul>
-        <li><a class="title" href="/">Birdb</a></li>
-        <li class="header-bar-bottom">by wiley y.</li>
-        <li class="header-bar-empty"></li>
-        <li><a href="/birddb/bird_partial">Contribute</a></li>
-        <li><a href="/about/">About</a></li>
-    </ul>
-</div>
-<div class="main">
-    <h2 class="top-margin">
-        Currently scraping birds. Please wait warmly and try again in a few minutes.
-    </h2>
-    <img class="bird-img" src="{% static 'birddb/birdwait.png' %}">
-</div>
+    <body>
+        <div class="header-bar">
+            <ul>
+                <li><a class="title" href="/">Birdb</a></li>
+                <li class="header-bar-bottom">by wiley y.</li>
+                <li class="header-bar-empty"></li>
+                <li><a href="/birddb/bird_partial">Contribute</a></li>
+                <li><a href="/about/">About</a></li>
+            </ul>
+        </div>
+        <div class="main">
+            <h2 class="top-margin">
+                Currently scraping birds. Please wait warmly and try again in a few minutes.
+            </h2>
+            <img class="bird-img-huge" src="{% static 'birddb/birdwait.png' %}">
+        </div>
+    </body>
+</html>

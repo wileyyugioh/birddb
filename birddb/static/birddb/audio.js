@@ -14,7 +14,7 @@ function doToggle() {
 }
 
 function doEnd() {
-    this.controller.className = "bird-call audio-button audio-play";
+    this.custom_controller.className = "bird-call audio-button audio-play";
 }
 
 function main() {
@@ -36,7 +36,7 @@ function main() {
 
         // add player to controls and vice versa
         audio_button.player = audio_player;
-        audio_player.controller = audio_button;
+        audio_player.custom_controller = audio_button;
 
         // add listeners
         audio_button.addEventListener("click", doToggle, false);
