@@ -1,74 +1,5 @@
-body {
-    font-family: "Nunito", sans-serif;
-    margin: 0rem;
-}
-
-a:visited {
-    color: inherit;
-}
-
-.main {
-    margin-top: 4rem;
-    text-align: center;
-}
-
 .round {
     border-radius: .1rem;
-}
-
-.header-bar {
-    background-color: #FFFF66;
-    position: fixed;
-    top: 0rem;
-    width: 100%;
-}
-
-.header-bar ul {
-    display: table;
-    list-style-type: none;
-    height: 1px;
-    margin: 0% 5%;
-    padding: 0;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-.header-bar ul li {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.header-bar ul li:nth-child(n+4) a {
-    padding: .5rem .5rem;
-}
-
-.header-bar ul li:nth-child(n+4):hover {
-    background-color: #f2f200;
-}
-
-.header-bar ul li a {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    color: black;
-    font-size: 1.5rem;
-}
-
-.header-bar ul li a:hover {
-    color: #6A5ACD;
-}
-
-.header-bar-empty {
-    width: 4.9rem;
-}
-
-.header-bar-bottom {
-    display: table-cell;
-    vertical-align: bottom !important;
-}
-
-.title {
-    font-size: 2.5rem !important;
 }
 
 .center-img {
@@ -301,10 +232,6 @@ h2 {
 }
 
 @media only screen and (max-width: 812px) {
-    html {
-        font-size: 10px;
-    }
-
     .location-bar {
         font-size: 2.5rem;
     }

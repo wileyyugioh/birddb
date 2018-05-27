@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" href="{% static 'front/basestyle.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'front/css/fontello.css' %}" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
+        {% block head-content %}{% endblock %}
+    </head>
+
+    <body>
+        <div class="header-bar">
+            <ul>
+                <li><a class="title" href="/">Birdb</a></li>
+                <li class="header-bar-bottom">by wiley y.</li>
+                <li class="header-bar-empty"></li>
+                <li><a href="/birddb/bird_partial">Contribute</a></li>
+                <li><a href="/about/">About</a></li>
+            </ul>
+            <a class="header-bar-icon"><i class="icon-menu"></i></a>
+        </div>
+        <div class="main">
+            {% block main-content %}{% endblock %}
+        </div>
+    </body>
+</html>
