@@ -11,15 +11,22 @@
     </head>
 
     <body>
-        <div class="header-bar">
-            <ul>
-                <li><a class="title" href="/">Birdb</a></li>
-                <li class="header-bar-bottom">by wiley y.</li>
-                <li class="header-bar-empty"></li>
-                <li><a href="/birddb/bird_partial">Contribute</a></li>
-                <li><a href="/about/">About</a></li>
-            </ul>
-            <a class="header-bar-icon"><i class="icon-menu"></i></a>
+        <div class="header-bar-container">
+            <div class="header-bar">
+                <div class="header-bar-tables">
+                    <ul>
+                        <li><a class="title" href="/">Birdb</a></li>
+                        <li class="header-bar-bottom">by wiley y.</li>
+                        <li class="header-bar-empty"></li>
+                    </ul>
+                    <input type="checkbox" id="header-bar-dynamic">
+                    <ul class="header-bar-menu">
+                        <li><a href="/birddb/bird_partial"><div>Contribute</div></a></li>
+                        <li><a href="/about/"><div>About</div></a></li>
+                    </ul>
+                </div>
+                <label for="header-bar-dynamic" class="header-bar-icon"><i class="icon-menu"></i></label>
+            </div>
         </div>
         <div class="main">
             {% block main-content %}{% endblock %}

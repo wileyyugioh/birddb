@@ -16,48 +16,62 @@ a:visited {
     text-align: center;
 }
 
-.header-bar {
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
+.header-bar-container {
     background-color: #FFFF66;
     position: fixed;
     top: 0rem;
     width: 100%;
 }
 
-.header-bar ul {
-    display: inline-table;
-    list-style-type: none;
-    height: 1px;
+.header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin: 0% 5%;
-    padding: 0;
+}
+
+.header-bar-tables {
+    display: flex;
+    flex-wrap: nowrap;
     overflow: hidden;
     white-space: nowrap;
 }
 
-.header-bar ul li {
-    display: table-cell;
-    vertical-align: middle;
+.header-bar-tables ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0rem;
+    padding: 0rem;
 }
 
-.header-bar ul li:nth-child(n+4) a {
-    padding: .5rem .5rem;
-}
-
-.header-bar ul li:nth-child(n+4):hover {
-    background-color: #f2f200;
-}
-
-.header-bar ul li a {
-    display: block;
-    text-align: center;
+.header-bar-tables ul li a {
     text-decoration: none;
     color: black;
     font-size: 1.5rem;
 }
 
-.header-bar ul li a:hover {
+.header-bar-tables .header-bar-menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.header-bar-menu li a {
+    display: flex;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    margin: 0rem 0.75rem;
+}
+
+.header-bar-menu li a div {
+    margin: auto 0rem;
+}
+
+.header-bar-menu li:hover {
+    background-color: #f2f200;
+}
+
+.header-bar-tables ul li:hover a {
     color: #6A5ACD;
 }
 
@@ -66,8 +80,7 @@ a:visited {
 }
 
 .header-bar-bottom {
-    display: table-cell;
-    vertical-align: bottom !important;
+    margin-top: auto;
 }
 
 .title {
@@ -75,6 +88,10 @@ a:visited {
 }
 
 .header-bar-icon {
+    display: none;
+}
+
+#header-bar-dynamic {
     display: none;
 }
 
@@ -93,5 +110,12 @@ a:visited {
         float: right;
         margin-right: 5%;
         font-size: 2rem;
+    }
+
+    #header-bar-dynamic:checked + ul li:nth-child(n+4) {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 60px;
     }
 }
