@@ -77,7 +77,6 @@ class BirdRanker:
         size = len(complete)
         full = [None] * size
         for i in range(size):
-            start = time()
             color = complete[i][0].get_color
             if color:
                 size = complete[i][0].get_size
