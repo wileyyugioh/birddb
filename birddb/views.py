@@ -10,6 +10,8 @@ from .birdranker import SearchData
 from .birdsearch import BirdSearcher
 from .scrape.colornames import SIMPLIFIED_COLORS_NAMES
 
+from time import time
+
 
 # THERE CAN BE ONLY ONE!
 bs = BirdSearcher()
@@ -63,7 +65,8 @@ def bird_poll(request, bird_id):
 
 def bird_partial(request):
     """ Show all partial birds """
-    return render(request, "birddb/bird_partial.html", {"bird_ranks": Bird.objects.filter(color__exact=None, birdpollcolor__isnull=True)[:MAX_SIZE], "COLOR_NAMES": SIMPLIFIED_COLORS_NAMES})
+    return render(request, "birddb/bird_partial.html", {"bird_ranks": Bird.objects.filter(color__exact=None, birdpollcolor__isnull=True).prefetch_related("webdata")[:MAX_SIZE], 
+                                                        "COLOR_NAMES": SIMPLIFIED_COLORS_NAMES})
 
 
 def bird_error(request):

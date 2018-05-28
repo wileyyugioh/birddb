@@ -26,3 +26,6 @@
 <div><h1>Success! No partial birds found!</h1></div>
 <div><img src="{% static 'birddb/birdhappy.png' %}" alt="Success!" class="bird-img"></div>
 {% endblock %}
+{% block birdscript %}
+<script src="{% static 'birddb/partial.min.js' %}"></script>
+{% endblock %}

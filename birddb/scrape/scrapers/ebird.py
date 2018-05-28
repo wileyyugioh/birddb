@@ -5,6 +5,7 @@ try:
 except ImportError:
     from ebirdconfig import EBIRD_API_KEY
 
+
 class EbirdScraper:
     """ Uses the eBird 2.0 API to get birds given a location """
 

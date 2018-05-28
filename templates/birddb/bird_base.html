@@ -1,7 +1,7 @@
 {% extends "front/base.html" %}
 {% load static %}
 {% block head-content %}
-<link rel="stylesheet" type="text/css" href="{% static 'birddb/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'birddb/style.min.css' %}">
 {% endblock %}
 {% block main-content %}
 {% block birdbanner %}{% endblock %}
@@ -10,7 +10,7 @@
     <table class="bird-table">
         {% for bird in bird_ranks %}
         <tr class="bird-entry">
-            <td><a class="bird-count">{{ forloop.counter }}</a></td>
+            <td><a class="bird-count">{{ forloop.counter|safe }}</a></td>
             <td><span class="bird-name">{{ bird.get_a_name }}</span></td>
             <td><span class="bird-sci">{{ bird.get_sci_name }}</span></td>
             <td>
@@ -39,7 +39,7 @@
                     <source src="{{ bird.webdata.call }}" type="audio/mp3">
                 </audio>
                 <div class="citation">
-                    <div class="citation-author"><i>Recorder: {{ bird.webdata.call_rec}}</i></div>
+                    <div class="citation-author"><i>Recorder: {{ bird.webdata.call_rec }}</i></div>
                     <div class="citation-license"><a href="{{ bird.webdata.call_lic }}"><i>License</i></a></div>
                 </div>
                 {% else %}
@@ -57,6 +57,5 @@
 {% block birdempty %}{% endblock %}
 {% endif %}
 <iframe width="0" height="0" style="display: none; border: 0;" name="dummy" id="dummy"></iframe>
-<script src="{% static 'birddb/audio.js' %}"></script>
-<script src="{% static 'birddb/partialform.js' %}"></script>
+{% block birdscript %}{% endblock %}
 {% endblock %}

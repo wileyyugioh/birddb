@@ -74,6 +74,29 @@ def color_distance_norm(a, b):
     return color_distance(a, b) / MAX_VAL
 
 
+
+class SimilarColors:
+    """ Object for caching similar colors """
+    def __init__(self, size=3):
+        self._size = 3
+        self._cache = {};
+
+    def close_colors(a):
+        """ Return a list of colors most similar """
+        # DEFINITELY NOT THREAD SAFE!
+        if a not in self._cache:
+            scores = [None] * len(SIMPLIFIED_COLORS_NAMES)
+            for color, i in enumerate(SIMPLIFIED_COLORS_NAMES):
+                scores[i] = (color, color_distance(a, color))
+
+            # ignore duplicate
+            results = scores.sort(key=lambda tup: tup[1])[1:self._size + 1]
+            self._cache[a] = results
+        else:
+            results = self._cache[a]
+        return results
+
+
 OPTIONAL_PREFIX = ["all"
                   ]
 REGEX_BASE = "\ ({0}|{1})(?:ish)?(?:\-({0})(?:ish)?|[^\w\-])"

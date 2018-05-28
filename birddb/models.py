@@ -1,5 +1,6 @@
 from django.db import models
 from django.dispatch import receiver
+from django.utils.functional import cached_property
 
 from string import capwords
 
@@ -66,26 +67,33 @@ class Bird(models.Model):
     def __str__(self):
         return self.sci_name
 
+    @cached_property
     def get_color(self):
         """ Return color """
-        if self.birdpollcolor_set.exists():
+        try:
             return self.birdpollcolor_set.annotate(models.Max("votes"))[0].color
+        except IndexError:
+            pass
         return self.color
 
+    @cached_property
     def get_size(self):
         """ Guaranteed to return something??? """
         if self.size:
             return self.size
         return self.genus.get_size_avg()
 
+    @cached_property
     def get_a_name(self):
         """ Returns a single common name """
         return capwords(self.name.split(",")[0], " ")
 
+    @cached_property
     def get_sci_name(self):
         """ Returns formatted scientific name """
         return self.sci_name.capitalize()
 
+    @cached_property
     def get_genus_str(self):
         """ Returns the genus string """
         return self.genus.split()[0]

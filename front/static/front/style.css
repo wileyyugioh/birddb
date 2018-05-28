@@ -107,12 +107,11 @@ h2 {
 
 .dropdown-container {
     position: absolute;
-    text-align: left;
     background-color: white;
     width: 30.4rem;
     left: 0rem;
     right: 0rem;
-    margin: 0rem auto;
+    margin: 0rem auto !important;
 }
 
 .dropdown-content {
@@ -135,7 +134,7 @@ h2 {
     display: none;
 }
 
-.radio-bar div div {
+.radio-bar label span {
     display: inline-block;
     padding: .75rem 1.5rem;
     width: 4.5rem;
@@ -143,7 +142,7 @@ h2 {
     cursor: pointer;
 }
 
-.radio-bar div div p {
+.radio-bar label span p {
     margin: 0rem;
 }
 
@@ -162,29 +161,30 @@ h2 {
     justify-content: center;
 }
 
-.size-bar div {
+.size-bar label {
     display: flex;
     margin: .5rem .5rem;
 }
 
-.size-bar div div {
+.size-bar label span {
     background-color: #ADD8E6;
 }
 
-.size-bar div div:hover {
+.size-bar label span:hover {
     background-color: #87CEFA;
 }
 
-.size-bar input[type="radio"]:checked ~ div {
+.size-bar input[type="radio"]:checked ~ span {
     background-color: #00bfff;
 }
 
-.color-bar div {
+.color-bar label {
     display: inline-block;
     padding: .3rem .3rem;
 }
 
-.color-bar div div {
+.color-bar label span {
+    display: inline-block;
     height: 3rem;
     width: 3rem;
     padding: 0rem 0rem;
@@ -192,52 +192,52 @@ h2 {
     box-shadow: 0px 0px 0px 1px black;
 }
 
-.color-bar div div:hover {
+.color-bar label span:hover {
     box-shadow: 0px 0px 0px 1px #91E3FF;
 }
 
-.color-bar input[type="radio"]:checked ~ div {
+.color-bar input[type="radio"]:checked ~ span {
     border: 1px solid #00BFFF;
     box-shadow: 0px 0px 0px 1px #00BFFF;
 }
 
-.color-bar div div.red-input {
+.color-bar label span.red-input {
     background-color: red;
 }
 
-.color-bar div div.orange-input {
+.color-bar label span.orange-input {
     background-color: orange;
 }
 
-.color-bar div div.yellow-input {
+.color-bar label span.yellow-input {
     background-color: yellow;
 }
 
-.color-bar div div.blue-input {
+.color-bar label span.blue-input {
     background-color: blue;
 }
 
-.color-bar div div.green-input {
+.color-bar label span.green-input {
     background-color: green;
 }
 
-.color-bar div div.violet-input {
+.color-bar label span.violet-input {
     background-color: purple;
 }
 
-.color-bar div div.brown-input {
+.color-bar label span.brown-input {
     background-color: brown;
 }
 
-.color-bar div div.grey-input {
+.color-bar label span.grey-input {
     background-color: grey;
 }
 
-.color-bar div div.white-input {
+.color-bar label span.white-input {
     background-color: white;
 }
 
-.color-bar div div.black-input {
+.color-bar label span.black-input {
     background-color: black;
 }
 

@@ -1,7 +1,7 @@
 {% extends "front/base.html" %}
 {% load static %}
 {% block head-content %}
-<link rel="stylesheet" type="text/css" href="{% static 'front/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'front/style.min.css' %}">
 {% endblock %}
 {% block main-content %}
 <div>
@@ -22,26 +22,26 @@
     </div>
     <h2>Color</h2>
     <div class="color-bar radio-bar">
-        <div><input type="radio" name="color" value="red" required><div class="round red-input"></div></div>
-        <div><input type="radio" name="color" value="orange"><div class="round orange-input"></div></div>
-        <div><input type="radio" name="color" value="yellow"><div class="round yellow-input"></div></div>
-        <div><input type="radio" name="color" value="green"><div class="round green-input"></div></div>
-        <div><input type="radio" name="color" value="blue"><div class="round blue-input"></div></div>
-        <div><input type="radio" name="color" value="violet"><div class="round violet-input"></div></div>
-        <div><input type="radio" name="color" value="brown"><div class="round brown-input"></div></div>
-        <div><input type="radio" name="color" value="grey"><div class="round grey-input"></div></div>
-        <div><input type="radio" name="color" value="white"><div class="round white-input"></div></div>
-        <div><input type="radio" name="color" value="black"><div class="round black-input"></div></div>
+        <label><input type="radio" name="color" value="red" required><span class="round red-input"></span></label>
+        <label><input type="radio" name="color" value="orange"><span class="round orange-input"></span></label>
+        <label><input type="radio" name="color" value="yellow"><span class="round yellow-input"></span></label>
+        <label><input type="radio" name="color" value="green"><span class="round green-input"></span></label>
+        <label><input type="radio" name="color" value="blue"><span class="round blue-input"></span></label>
+        <label><input type="radio" name="color" value="violet"><span class="round violet-input"></span></label>
+        <label><input type="radio" name="color" value="brown"><span class="round brown-input"></span></label>
+        <label><input type="radio" name="color" value="grey"><span class="round grey-input"></span></label>
+        <label><input type="radio" name="color" value="white"><span class="round white-input"></span></label>
+        <label><input type="radio" name="color" value="black"><span class="round black-input"></span></label>
     </div>
     <h2>Size Range</h2>
     <div class="size-bar radio-bar">
-        <div><input type="radio" name="size" value="5" required><div class="round"><p>3-5</p><p>in</p></div></div>
-        <div><input type="radio" name="size" value="17"><div class="round"><p>5-9</p><p>in</p></div></div>
-        <div><input type="radio" name="size" value="31"><div class="round"><p>9-16</p><p>in</p></div></div>
-        <div><input type="radio" name="size" value="60"><div class="round"><p>16-32</p><p>in</p></div></div>
-        <div><input type="radio" name="size" value="131"><div class="round"><p>32-72</p><p>in</p></div></div>
+        <label><input type="radio" name="size" value="5" required><span class="round">3-5<br>in</span></label>
+        <label><input type="radio" name="size" value="17"><span class="round">5-9<br>in</span></label>
+        <label><input type="radio" name="size" value="31"><span class="round">9-16<br>in</span></label>
+        <label><input type="radio" name="size" value="60"><span class="round">16-32<br>in</span></label>
+        <label><input type="radio" name="size" value="131"><span class="round">32-72<br>in</span></label>
     </div>
     <input class="round" type="submit" value="Submit">
 </form>
-<script src="{% static 'front/get_location.js' %}" ></script>
+<script src="{% static 'front/location.min.js' %}" ></script>
 {% endblock %}

@@ -8,7 +8,7 @@ from functools import partial
 from multiprocessing import TimeoutError
 from multiprocessing.pool import ThreadPool
 from random import uniform
-from time import time, sleep
+from time import sleep
 
 
 class EntryError(ValueError):
@@ -99,7 +99,7 @@ class BirdAccess:
         """ Wrap _do_soft_get_bird """
         return BirdAccess._do_soft_get_bird(bs, sci_name)
 
-    def batch_soft_get_bird(self, sci_names):
+    def batch_soft_get_bird(self, sci_names, callback=None):
         """ When passed in a list of bird names, returns a list of bird entries """
         if not self._is_threading:
             bs = BirdScraper()
@@ -113,6 +113,6 @@ class BirdAccess:
             try:
                 birds = async_result.get(timeout=10)
             except TimeoutError:
-                raise TooLongError()
+                return birds, False
 
-        return birds
+        return birds, True
