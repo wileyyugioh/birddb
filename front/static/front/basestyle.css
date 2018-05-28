@@ -3,13 +3,19 @@ body {
     margin: 0rem;
 }
 
+a {
+    color: black;
+}
+
 a:visited {
     color: inherit;
 }
 
 .main {
+    margin: 0% auto;
     margin-top: 3.4rem;
     text-align: center;
+    max-width: 70rem;
 }
 
 .main div {
@@ -89,13 +95,14 @@ a:visited {
 
 .header-bar-icon {
     display: none;
+    cursor: pointer;
 }
 
 #header-bar-dynamic {
     display: none;
 }
 
-@media only screen and (max-width: 812px) {
+@media only screen and (max-width: 1030px) {
     html {
         font-size: 10px;
     }

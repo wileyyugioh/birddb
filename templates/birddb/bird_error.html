@@ -1,11 +1,11 @@
 {% extends "front/base.html" %}
 {% load static %}
 {% block head-content %}
-<link rel="stylesheet" type="text/css" href="{% static 'birddb/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'birddb/style.css' %}">
 {% endblock %}
 {% block main-content %}
 <h2 class="top-margin">
     Currently scraping birds. Please wait warmly and try again in a few minutes.
 </h2>
-<img class="bird-img-huge" src="{% static 'birddb/birdwait.png' %}">
-{% end-block %}
+<img  class="bird-img-huge" src="{% static 'birddb/birdwait.png' %}" alt="Yikes!">
+{% endblock %}

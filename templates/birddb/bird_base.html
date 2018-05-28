@@ -1,0 +1,62 @@
+{% extends "front/base.html" %}
+{% load static %}
+{% block head-content %}
+<link rel="stylesheet" type="text/css" href="{% static 'birddb/style.css' %}">
+{% endblock %}
+{% block main-content %}
+{% block birdbanner %}{% endblock %}
+{% if bird_ranks %}
+<div class="bird-table-container">
+    <table class="bird-table">
+        {% for bird in bird_ranks %}
+        <tr class="bird-entry">
+            <td><a class="bird-count">{{ forloop.counter }}</a></td>
+            <td><span class="bird-name">{{ bird.get_a_name }}</span></td>
+            <td><span class="bird-sci">{{ bird.get_sci_name }}</span></td>
+            <td>
+                <div class="bird-img-container">
+                    {% if bird.webdata.img %} 
+                    <img src="{{ bird.webdata.img }}" alt="{{ bird.get_sci_name }}" class="bird-img">
+                    <div class="citation">
+                        <div class="citation-author"><i>Author: {% autoescape off %}{{ bird.webdata.img_rec}}{% endautoescape %}</i></div>
+                        <div class="citation-license">
+                            {% if bird.webdata.img_href %}
+                            <a href="{{ bird.webdata.img_href }}"><i>License: {{ bird.webdata.img_lic }}</i></a>
+                            {% else %}
+                            <p><i>License: {{ bird.webdata.img_lic }}</i></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% else %}
+                    <img src="{% static 'birddb/unknownbird.png' %}" alt="Unknown bird" class="bird-img">
+                    {% endif %}
+                </div>
+            </td>
+            <td>
+                {% if bird.webdata.call %}
+                <!-- add audio button using javascript here! -->
+                <audio class="audio-player" preload="none" controls>
+                    <source src="{{ bird.webdata.call }}" type="audio/mp3">
+                </audio>
+                <div class="citation">
+                    <div class="citation-author"><i>Recorder: {{ bird.webdata.call_rec}}</i></div>
+                    <div class="citation-license"><a href="{{ bird.webdata.call_lic }}"><i>License</i></a></div>
+                </div>
+                {% else %}
+                <img src="{% static 'birddb/nosound.png' %}" alt="No sound" class="bird-call">
+                {% endif %}
+            </td>
+            <td class="bird-error-cell">
+                {% block birderror %}{% endblock %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% else %}
+{% block birdempty %}{% endblock %}
+{% endif %}
+<iframe width="0" height="0" style="display: none; border: 0;" name="dummy" id="dummy"></iframe>
+<script src="{% static 'birddb/audio.js' %}"></script>
+<script src="{% static 'birddb/partialform.js' %}"></script>
+{% endblock %}

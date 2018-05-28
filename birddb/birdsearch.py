@@ -19,7 +19,7 @@ class BirdSearcher:
         self._br = BirdRanker()
         self._ba = BirdAccess()
 
-    def search(self, sd):
+    def search(self, sd, with_score=False):
         """ Searches the databases for most likely birds """
 
         # Assume search data already verified
@@ -39,4 +39,4 @@ class BirdSearcher:
         # Sort the rankings from highest to lowest
         rankings.sort(key=lambda tup: tup[1], reverse=True)
 
-        return rankings
+        return rankings if with_score else [pair[0] for pair in rankings]

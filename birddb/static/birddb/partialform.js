@@ -6,7 +6,7 @@ function disableForm() {
     this.nextElementSibling.style.display = "";
 }
 
-function main() {
+function form_main() {
     var bird_error = document.getElementsByClassName("bird-error");
     for(var i = 0; i < bird_error.length; i++) {
         // add listener to form submit
@@ -15,4 +15,4 @@ function main() {
     }
 }
 
-main();
+form_main();

@@ -14,10 +14,12 @@ from .scrape.colornames import SIMPLIFIED_COLORS_NAMES
 # THERE CAN BE ONLY ONE!
 bs = BirdSearcher()
 
+
+MAX_SIZE = 20
+
+
 def bird_ranks(request):
     """ Page for every little birdy """
-    MAX_SIZE = 20
-
     try:
         lat = float(request.GET["lat"])
         lon = float(request.GET["lon"])
@@ -61,7 +63,7 @@ def bird_poll(request, bird_id):
 
 def bird_partial(request):
     """ Show all partial birds """
-    return render(request, "birddb/bird_partial.html", {"bird_ranks": Bird.objects.filter(color__exact=None, birdpollcolor__isnull=True)[:20], "COLOR_NAMES": SIMPLIFIED_COLORS_NAMES})
+    return render(request, "birddb/bird_partial.html", {"bird_ranks": Bird.objects.filter(color__exact=None, birdpollcolor__isnull=True)[:MAX_SIZE], "COLOR_NAMES": SIMPLIFIED_COLORS_NAMES})
 
 
 def bird_error(request):

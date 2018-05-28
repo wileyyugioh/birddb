@@ -6,7 +6,7 @@ function disableForm() {
     this.nextElementSibling.style.display = "";
 }
 
-function main() {
+function form_main() {
     var bird_error = document.getElementsByClassName("bird-error");
     var bird_report = document.getElementsByClassName("bird-error-report");
 
@@ -27,4 +27,4 @@ function main() {
     }
 }
 
-main();
+form_main();

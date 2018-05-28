@@ -17,7 +17,7 @@ function doEnd() {
     this.custom_controller.className = "bird-call audio-button audio-play";
 }
 
-function main() {
+function audio_main() {
     var players = document.getElementsByClassName("audio-player");
 
     // assumes 1 audio control for every audio player
@@ -44,4 +44,4 @@ function main() {
     }
 }
 
-main();
+audio_main();

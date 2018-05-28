@@ -42,7 +42,7 @@ a {
 
 .bird-entry td {
     display: table-cell;
-    padding: .5rem 1rem;
+    padding: 0rem 1rem;
 }
 
 .bird-entry td:nth-child(even) {
@@ -159,4 +159,10 @@ a {
 
 .top-margin {
     padding: 2rem 0rem;
+}
+
+@media only screen and (max-width: 1030px) {
+    .main {
+        max-width: none;
+    }
 }

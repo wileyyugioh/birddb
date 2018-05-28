@@ -1,48 +1,47 @@
 {% extends "front/base.html" %}
 {% load static %}
 {% block head-content %}
-<link rel="stylesheet" type="text/css" href="{% static 'front/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'front/style.css' %}">
 {% endblock %}
 {% block main-content %}
 <div>
-    <img class="center-img" src="{% static 'front/birdgreet.jpg' %}" />
+    <img class="center-img" src="{% static 'front/birdgreet.jpg' %}" alt="Greetings!">
 </div>
-    <h2 class="location-bar">
-        <label><input type="radio" name="search-type" value="latlon" id="latlon" checked="checked"><div class="round">Coordinates</div></label>
-        <label style="display: none;"><input type="radio" name="search-type" value="search" id="search" disabled><div class="round">Search</div></label>
-    </h2>
+    <div class="location-bar">
+        <div><input type="radio" name="search-type" value="latlon" id="latlon" checked="checked"><div class="round"><h2>Coordinates</h2></div></div>
+        <div style="display: none;"><input type="radio" name="search-type" value="search" id="search" disabled><div class="round"><h2>Search</h2></div></div>
+    </div>
 <form id="bird-form" class="bird-form" action="{% url 'birddb:bird_ranks' %}" method="get">
     <div class="form-text">
-        <input type="text" id="form-lat" name="lat" placeholder="Lat." maxlength="10" autocomplete="off" required />
-        <input type="text" id="form-lon" name="lon" placeholder="Lon." maxlength="10" autocomplete="off" required />
+        <input type="text" id="form-lat" name="lat" placeholder="Lat." maxlength="10" autocomplete="off" required>
+        <input type="text" id="form-lon" name="lon" placeholder="Lon." maxlength="10" autocomplete="off" required>
     </div>
     <div class="form-text form-search" style="display: none;">
-        <input type="text" id="form-search" placeholder="Search for a location" maxlength="40" autocomplete="off" />
+        <input type="text" id="form-search" placeholder="Search for a location" maxlength="40" autocomplete="off">
         <div id="dropdown" class="dropdown-container"></div>
     </div>
     <h2>Color</h2>
     <div class="color-bar radio-bar">
-        <label><input type="radio" name="color" value="red" required /><span class="round red-input"></span></label>
-        <label><input type="radio" name="color" value="orange" /><span class="round orange-input"></span></label>
-        <label><input type="radio" name="color" value="yellow" /><span class="round yellow-input"></span></label>
-        <label><input type="radio" name="color" value="green" /><span class="round green-input"></span></label>
-        <label><input type="radio" name="color" value="blue" /><span class="round blue-input"></span></label>
-        <label><input type="radio" name="color" value="violet" /><span class="round violet-input"></span></label>
-        <label><input type="radio" name="color" value="brown" /><span class="round brown-input"></span></label>
-        <label><input type="radio" name="color" value="grey" /><span class="round grey-input"></span></label>
-        <label><input type="radio" name="color" value="white" /><span class="round white-input"></span></label>
-        <label><input type="radio" name="color" value="black" /><span class="round black-input"></span></label>
+        <div><input type="radio" name="color" value="red" required><div class="round red-input"></div></div>
+        <div><input type="radio" name="color" value="orange"><div class="round orange-input"></div></div>
+        <div><input type="radio" name="color" value="yellow"><div class="round yellow-input"></div></div>
+        <div><input type="radio" name="color" value="green"><div class="round green-input"></div></div>
+        <div><input type="radio" name="color" value="blue"><div class="round blue-input"></div></div>
+        <div><input type="radio" name="color" value="violet"><div class="round violet-input"></div></div>
+        <div><input type="radio" name="color" value="brown"><div class="round brown-input"></div></div>
+        <div><input type="radio" name="color" value="grey"><div class="round grey-input"></div></div>
+        <div><input type="radio" name="color" value="white"><div class="round white-input"></div></div>
+        <div><input type="radio" name="color" value="black"><div class="round black-input"></div></div>
     </div>
     <h2>Size Range</h2>
     <div class="size-bar radio-bar">
-        <label><input type="radio" name="size" value="5" required /><span class="round"><p>3-5</p><p>in</p></span></label>
-        <label><input type="radio" name="size" value="17" /><span class="round"><p>5-9</p><p>in</p></span></label>
-        <label><input type="radio" name="size" value="31" /><span class="round"><p>9-16</p><p>in</p></span></label>
-        <label><input type="radio" name="size" value="60" /><span class="round"><p>16-32</p><p>in</p></span></label>
-        <label><input type="radio" name="size" value="131" /><span class="round"><p>32-72</p><p>in</p></span></label>
+        <div><input type="radio" name="size" value="5" required><div class="round"><p>3-5</p><p>in</p></div></div>
+        <div><input type="radio" name="size" value="17"><div class="round"><p>5-9</p><p>in</p></div></div>
+        <div><input type="radio" name="size" value="31"><div class="round"><p>9-16</p><p>in</p></div></div>
+        <div><input type="radio" name="size" value="60"><div class="round"><p>16-32</p><p>in</p></div></div>
+        <div><input type="radio" name="size" value="131"><div class="round"><p>32-72</p><p>in</p></div></div>
     </div>
-    <input class="round" type="submit" value="Submit" />
+    <input class="round" type="submit" value="Submit">
 </form>
-</div>
 <script src="{% static 'front/get_location.js' %}" ></script>
 {% endblock %}

@@ -11,7 +11,7 @@
 
 .legal {
     white-space: pre-wrap;
-    margin: 0% 5%;
+    margin: 1rem 5%;
     font-family: Times New Roman;
     text-align: left;
 }
@@ -21,7 +21,7 @@
     font-family: Times New Roman;
 }
 
-h1, .bird-form h2, .bird-form input[type="submit"] {
+h1, .bird-form div, .bird-form input[type="submit"] {
     margin-top: .5rem;
     margin-left: 0rem;
     margin-right: 0rem;
@@ -35,6 +35,7 @@ h1, .bird-form h2, .bird-form input[type="submit"] {
 
 h2 {
     font-size: 2rem;
+    margin: 0rem;
 }
 
 .bird-form input[type="submit"] {
@@ -78,17 +79,17 @@ h2 {
     text-align: center;
 }
 
-.location-bar label {
+.location-bar div {
     flex: 1 1 auto;
 }
 
-.location-bar label div {
+.location-bar div div {
     display: inline-block;
     width: 12rem;
     cursor: pointer;
 }
 
-.location-bar label .div-space {
+.location-bar div .div-space {
     width: 4rem;
 }
 
@@ -119,6 +120,7 @@ h2 {
     border: 1px solid black;
     border-bottom-width: 0px;
     cursor: pointer;
+    text-align: left;
 }
 
 .dropdown-content:last-child {
@@ -133,7 +135,7 @@ h2 {
     display: none;
 }
 
-.radio-bar label span {
+.radio-bar div div {
     display: inline-block;
     padding: .75rem 1.5rem;
     width: 4.5rem;
@@ -141,7 +143,7 @@ h2 {
     cursor: pointer;
 }
 
-.radio-bar label span p {
+.radio-bar div div p {
     margin: 0rem;
 }
 
@@ -160,29 +162,29 @@ h2 {
     justify-content: center;
 }
 
-.size-bar label {
+.size-bar div {
     display: flex;
     margin: .5rem .5rem;
 }
 
-.size-bar label span {
+.size-bar div div {
     background-color: #ADD8E6;
 }
 
-.size-bar label span:hover {
+.size-bar div div:hover {
     background-color: #87CEFA;
 }
 
-.size-bar input[type="radio"]:checked ~ span {
+.size-bar input[type="radio"]:checked ~ div {
     background-color: #00bfff;
 }
 
-.color-bar label {
+.color-bar div {
     display: inline-block;
     padding: .3rem .3rem;
 }
 
-.color-bar label span {
+.color-bar div div {
     height: 3rem;
     width: 3rem;
     padding: 0rem 0rem;
@@ -190,61 +192,61 @@ h2 {
     box-shadow: 0px 0px 0px 1px black;
 }
 
-.color-bar label span:hover {
+.color-bar div div:hover {
     box-shadow: 0px 0px 0px 1px #91E3FF;
 }
 
-.color-bar input[type="radio"]:checked ~ span {
+.color-bar input[type="radio"]:checked ~ div {
     border: 1px solid #00BFFF;
     box-shadow: 0px 0px 0px 1px #00BFFF;
 }
 
-.color-bar label span.red-input {
+.color-bar div div.red-input {
     background-color: red;
 }
 
-.color-bar label span.orange-input {
+.color-bar div div.orange-input {
     background-color: orange;
 }
 
-.color-bar label span.yellow-input {
+.color-bar div div.yellow-input {
     background-color: yellow;
 }
 
-.color-bar label span.blue-input {
+.color-bar div div.blue-input {
     background-color: blue;
 }
 
-.color-bar label span.green-input {
+.color-bar div div.green-input {
     background-color: green;
 }
 
-.color-bar label span.violet-input {
-    background-color: violet;
+.color-bar div div.violet-input {
+    background-color: purple;
 }
 
-.color-bar label span.brown-input {
+.color-bar div div.brown-input {
     background-color: brown;
 }
 
-.color-bar label span.grey-input {
+.color-bar div div.grey-input {
     background-color: grey;
 }
 
-.color-bar label span.white-input {
+.color-bar div div.white-input {
     background-color: white;
 }
 
-.color-bar label span.black-input {
+.color-bar div div.black-input {
     background-color: black;
 }
 
-@media only screen and (max-width: 812px) {
+@media only screen and (max-width: 1030px) {
     .location-bar {
         font-size: 2.25rem;
     }
 
-    .location-bar label div {
+    .location-bar div div {
         width: 15rem;
     }
 
@@ -252,7 +254,7 @@ h2 {
         font-size: 1.5rem;
     }
 
-    .color-bar label span {
+    .color-bar div div {
         height: 5rem;
         width: 5rem;
     }

@@ -1,7 +1,7 @@
 {% extends "front/base.html" %}
 {% load static %}
 {% block head-content %}
-<link rel="stylesheet" type="text/css" href="{% static 'front/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'front/style.min.css' %}">
 {% endblock %}
 {% block main-content %}
 <h2 class="center">Made for my 2018 CSUS Senior Project</h2>
@@ -12,7 +12,10 @@
     <a href="https://www.wikipedia.org/" target="_blank">Wikipedia</a>, and
     <a href="https://www.xeno-canto.org/" target="_blank">xeno-canto</a>.
 </h3>
-<img src="{% static 'front/smilebird.png' %}" class="center-img" />
+<img src="{% static 'front/smilebird.png' %}" alt="What an about page!" class="center-img">
+<h3 class="center">
+    <a href="https://github.com/wileyyugioh/birddb" target="_blank">Github</a>
+</h3>
 <h2 class="center legal-title">Legalese</h2>
 <p class="legal">
     TERMS OF SERVICE
