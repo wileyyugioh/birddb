@@ -89,7 +89,6 @@ function main() {
     search_dom.checked = true;
     search_dom.disabled = false;
     search_dom.parentNode.style.display = "";
-    document.getElementById("loc-space").style.display = "";
 
     search_dom.addEventListener("click", function() {
         showSearch();

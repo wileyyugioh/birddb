@@ -26,6 +26,7 @@ h1, .bird-form h2, .bird-form input[type="submit"] {
     margin-left: 0rem;
     margin-right: 0rem;
     margin-bottom: 0rem;
+    -webkit-appearance: none;
 }
 
 .bird-form input[type="submit"] {
@@ -70,8 +71,15 @@ h2 {
 }
 
 .location-bar {
-    margin: 1rem 0rem;
+    display: flex;
+    width: 36.5rem;
+    justify-content: space-between;
+    margin: 1rem auto;
     text-align: center;
+}
+
+.location-bar label {
+    flex: 1 1 auto;
 }
 
 .location-bar label div {
@@ -233,11 +241,11 @@ h2 {
 
 @media only screen and (max-width: 812px) {
     .location-bar {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
     }
 
     .location-bar label div {
-        width: 14.5rem;
+        width: 15rem;
     }
 
     .dropdown-container {

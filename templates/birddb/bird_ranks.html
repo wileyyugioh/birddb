@@ -1,10 +1,10 @@
 {% extends "front/base.html" %}
 {% load static %}
-{% if bird_ranks %}
 {% block head-content %}
 <link rel="stylesheet" type="text/css" href="{% static 'birddb/style.css' %}" />
-{% block endblock %}
+{% endblock %}
 {% block main-content %}
+{% if bird_ranks %}
 <div class="bird-table-container">
     <table class="bird-table">
         {% for bird, score in bird_ranks %}

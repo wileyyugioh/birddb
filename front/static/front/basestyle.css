@@ -8,7 +8,7 @@ a:visited {
 }
 
 .main {
-    margin-top: 4rem;
+    margin-top: 3.4rem;
     text-align: center;
 }
 
@@ -100,7 +100,15 @@ a:visited {
         font-size: 10px;
     }
 
-    .header-bar ul li:nth-child(n+4) {
+    .main {
+        margin-top: 4.1rem;
+    }
+
+    .title {
+        font-size: 3rem !important;
+    }
+
+    .header-bar-tables .header-bar-menu {
         display: none;
     }
 
@@ -112,10 +120,24 @@ a:visited {
         font-size: 2rem;
     }
 
-    #header-bar-dynamic:checked + ul li:nth-child(n+4) {
+    #header-bar-dynamic:checked + .header-bar-menu {
         display: block;
         position: absolute;
-        right: 20px;
-        top: 60px;
+        right: 4rem;
+        top: 4.1rem;
+        background-color: #FFFF66;
+    }
+
+    #header-bar-dynamic:checked + .header-bar-menu li {
+        border: 1px solid black;
+        border-bottom-width: 0px;
+    }
+
+    #header-bar-dynamic:checked + .header-bar-menu li:last-child {
+        border-bottom-width: 1px;
+    }
+
+    #header-bar-dynamic:checked + .header-bar-menu li a div{
+        font-size: 3rem;
     }
 }
