@@ -41,17 +41,8 @@ class Genus(models.Model):
             self.num_entries = models.F("num_entries") - 1
 
 
-class BirdManager(models.Manager):
-    """ Manager for Bird """
-    def get_with_related(self, *args, **kwargs):
-        return self.get_queryset().prefetch_related("birdpollcolor_set")
-
-
 class Bird(models.Model):
     """ Represents a bird in the database """
-
-    # Reference to BirdManager
-    objects = BirdManager()
 
     # English name / aliases separated by commas
     # Ex. 'California condor,Cóndor Californiano'
@@ -80,7 +71,10 @@ class Bird(models.Model):
     def get_color(self):
         """ Return color """
         if self.birdpollcolor_set.exists():
-            return self.birdpollcolor_set.annotate(models.Max("votes"))[0].color
+            def rank(poll):
+                return poll.votes
+            #return self.birdpollcolor_set.annotate(models.Max("votes"))[0].color
+            return max(self.birdpollcolor_set.all(), key=rank).color
         return self.color
 
     @cached_property
@@ -153,12 +147,13 @@ class BirdPollColor(models.Model):
 class BirdReferenceManager(models.Manager):
     """ Manager for BirdReference """
     def get_with_related(self, *args, **kwargs):
-        return self.get_queryset().prefetch_related("bird", "bird__birdpollcolor_set")
+        return self.get_queryset().select_related("bird")
 
 
 class BirdReference(models.Model):
     """ A bird synonym. Birdonym? """
 
+    # BirdReferenceManager
     objects = BirdReferenceManager()
 
     # Scientific name

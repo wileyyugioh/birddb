@@ -1,3 +1,4 @@
+from django.db.models import prefetch_related_objects
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
@@ -37,7 +38,9 @@ def bird_ranks(request):
 
     try:
         bird_rankings = bs.search(sd)
-        return render(request, "birddb/bird_ranks.html", {"bird_ranks": [bird[0] for bird in bird_rankings[:MAX_SIZE]], "COLOR_NAMES": SIMPLIFIED_COLORS_NAMES})
+        render_birds = [bird[0] for bird in bird_rankings[:MAX_SIZE]]
+        prefetch_related_objects(render_birds, "webdata")
+        return render(request, "birddb/bird_ranks.html", {"bird_ranks": render_birds, "COLOR_NAMES": SIMPLIFIED_COLORS_NAMES})
     except TooLongError:
         # Took too long, so show error page
         return redirect("birddb:bird_error")

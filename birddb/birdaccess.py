@@ -52,7 +52,7 @@ class BirdAccess:
 
         # See if Bird already exists, if so, then create new BirdReference
         try:
-            bird = Bird.objects.get_with_related().get(sci_name__iexact=data.sci_name)
+            bird = Bird.objects.get(sci_name__iexact=data.sci_name)
             BirdReference.objects.get_or_create(sci_name=sci_name,
                                                 bird=bird
                                                )
@@ -69,7 +69,7 @@ class BirdAccess:
                 genus = Genus.objects.get_or_create(name=data.genus)[0]
 
                 # Create a new bird object
-                bird = Bird.objects.get_with_related().get_or_create(name=",".join(data.common_names),
+                bird = Bird.objects.get_or_create(name=",".join(data.common_names),
                                                                      sci_name=data.sci_name,
                                                                      genus=genus,
                                                                      color=data.color,
@@ -116,8 +116,3 @@ class BirdAccess:
                 return birds, False
 
         return birds, True
-
-    @classmethod
-    def get_by_ids(cls, ids):
-        """ Returns a QuerySet of Birds when given their ids """
-        return Bird.objects.get_with_related().filter(id__in=ids)
