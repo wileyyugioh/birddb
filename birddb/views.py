@@ -38,8 +38,10 @@ def bird_ranks(request):
 
     try:
         bird_rankings = bs.search(sd)
-        render_birds = [bird[0] for bird in bird_rankings[:MAX_SIZE]]
-        prefetch_related_objects(render_birds, "webdata")
+        render_birds = []
+        if bird_rankings:
+            render_birds = [bird[0] for bird in bird_rankings[:MAX_SIZE]]
+            prefetch_related_objects(render_birds, "webdata")
         return render(request, "birddb/bird_ranks.html", {"bird_ranks": render_birds, "COLOR_NAMES": SIMPLIFIED_COLORS_NAMES})
     except TooLongError:
         # Took too long, so show error page

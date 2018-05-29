@@ -48,6 +48,8 @@ class BirdGeoCache:
 
         if complete is None:
             birds_geo = self._eb.get_recent_obs(lat, lon)
+            if not birds_geo:
+                return None
             raw_birds, raw_freqs = zip(*birds_geo)
 
             # Get a list of BirdData

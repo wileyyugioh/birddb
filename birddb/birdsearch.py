@@ -15,6 +15,8 @@ class BirdSearcher:
         """ Searches the databases for most likely birds """
         # Assume search data already verified
         bird_data = self._bgc.get(sd.lat, sd.lon)
+        if not bird_data:
+            return None
 
         # Get each bird's ranking
         rankings = self._br.batch_rank(sd, bird_data[0], bird_data[1])
