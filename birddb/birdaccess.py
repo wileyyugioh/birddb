@@ -113,6 +113,6 @@ class BirdAccess:
             try:
                 birds = async_result.get(timeout=10)
             except TimeoutError:
-                return birds, False
+                return async_result, False
 
         return birds, True

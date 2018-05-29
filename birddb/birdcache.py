@@ -8,8 +8,6 @@ from .scrape.scrapers.ebird import EbirdScraper
 
 from threading import Thread
 
-from time import time
-
 
 class BirdGeoCache:
     """ Caches birds given a geolocation """
@@ -55,13 +53,10 @@ class BirdGeoCache:
             # Get a list of BirdData
             birds, success = self._ba.batch_soft_get_bird(raw_birds)
             if not success:
-                BirdGeoCache._add_cache_when_done(bird_data, raw_freqs, cache_key, cache_time)
+                BirdGeoCache._add_cache_when_done(birds, raw_freqs, cache_key, cache_time)
                 raise TooLongError()
             complete = BirdGeoCache._process_and_cache(birds, raw_freqs, cache_key, cache_time)
 
-        # Let's profile!
-        start = time()
         prefetch_related_objects([bird for bird in complete[0] if not bird.size], "genus")
         prefetch_related_objects(complete[0], "birdpollcolor_set")
-        print("PREFETCH", time() - start)
         return complete
