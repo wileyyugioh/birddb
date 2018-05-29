@@ -16,14 +16,14 @@
             <div class="header-bar">
                 <div class="header-bar-tables">
                     <ul>
-                        <li><a class="title" href="/">Birdb</a></li>
+                        <li><a class="title" href="{% url 'front:index' %}">Birdb</a></li>
                         <li class="header-bar-bottom">by wiley y.</li>
                         <li class="header-bar-empty"></li>
                     </ul>
                     <input type="checkbox" id="header-bar-dynamic">
                     <ul class="header-bar-menu">
-                        <li><a href="/birddb/bird_partial"><div>Contribute</div></a></li>
-                        <li><a href="/about/"><div>About</div></a></li>
+                        <li><a href="{% url 'birddb:bird_partial' %}"><div>Contribute</div></a></li>
+                        <li><a href="{% url 'front:about' %}"><div>About</div></a></li>
                     </ul>
                 </div>
                 <label for="header-bar-dynamic" class="header-bar-icon"><i class="icon-menu"></i></label>
