@@ -8,8 +8,11 @@
     <img class="center-img" src="{% static 'front/birdgreet.jpg' %}" alt="Greetings!">
 </div>
     <div class="location-bar">
-        <div><input type="radio" name="search-type" value="latlon" id="latlon" checked="checked"><div class="round"><h2>Coordinates</h2></div></div>
-        <div style="display: none;"><input type="radio" name="search-type" value="search" id="search" disabled><div class="round"><h2>Search</h2></div></div>
+        <label>
+            <input type="radio" name="search-type" value="latlon" id="latlon" checked="checked"><span class="round">Coordinates</span>
+        </label>
+        <label style="display: none;"><input type="radio" name="search-type" value="search" id="search" disabled><span class="round">Search</span>
+        </label>
     </div>
 <form id="bird-form" class="bird-form" action="{% url 'birddb:bird_ranks' %}" method="get">
     <div class="form-text">

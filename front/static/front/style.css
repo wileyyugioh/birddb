@@ -33,7 +33,7 @@ h1, .bird-form div, .bird-form input[type="submit"] {
     margin-top: 1.2rem;
 }
 
-h2 {
+h2, .location-bar label span {
     font-size: 2rem;
     margin: 0rem;
 }
@@ -73,35 +73,27 @@ h2 {
 
 .location-bar {
     display: flex;
-    width: 36.5rem;
+    width: 30.35rem;
     justify-content: space-between;
     margin: 1rem auto;
     text-align: center;
 }
 
-.location-bar div {
-    flex: 1 1 auto;
-}
-
-.location-bar div div {
+.location-bar label span {
     display: inline-block;
     width: 12rem;
     cursor: pointer;
 }
 
-.location-bar div .div-space {
-    width: 4rem;
-}
-
-.location-bar input[type="radio"] ~ div {
+.location-bar input[type="radio"] ~ span {
     background-color: #C0D5F9;
 }
 
-.location-bar input[type="radio"]:hover ~ div {
+.location-bar input[type="radio"]:hover ~ span {
     background-color: #93BCFF;
 }
 
-.location-bar input[type="radio"]:checked ~ div {
+.location-bar input[type="radio"]:checked ~ span {
     background-color: #4F91FF;
 }
 
