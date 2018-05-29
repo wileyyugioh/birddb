@@ -22,15 +22,24 @@ class BirdGeoCache:
         thread = Thread(target=BirdGeoCache._do_add_cache, args=(async_result, freq, cache_key, cache_time))
         thread.start()
 
-    def _process_and_cache(birds, freq, cache_key, cache_time):
+    def _process_and_cache(birds, freq, cache_key, cache_time, bad_programming=False):
         """ Processes Bird and frequency data, and caches it """
 
-        complete = []
+        all_birds = []
+        all_freq = []
+        if bad_programming:
+            bad = []
         for i in range(len(birds)):
             if birds[i]:
-                complete.append((birds[i], freq[i]))
+                all_birds.append(birds[i].id)
+                all_freq.append(freq[i])
+                if bad_programming:
+                    bad.append(birds[i])
 
+        complete = (all_birds, all_freq)
         cache.set(cache_key, complete, cache_time)
+        if bad_programming:
+            return (bad, all_freq)
         return complete
 
     def get(self, lat, lon, cache_time=12*60*60):
@@ -49,6 +58,8 @@ class BirdGeoCache:
             if not success:
                 BirdGeoCache._add_cache_when_done(bird_data, raw_freqs, cache_key, cache_time)
                 raise TooLongError()
-            complete = BirdGeoCache._process_and_cache(birds, raw_freqs, cache_key, cache_time)
+            final_result = BirdGeoCache._process_and_cache(birds, raw_freqs, cache_key, cache_time, True)
+        else:
+            final_result = (self._ba.get_by_ids(complete[0]), complete[1])
 
-        return complete
+        return final_result

@@ -33,7 +33,7 @@ class BirdAccess:
         # Assumes sci_name is all lower case
         # Check for BirdReference
         try:
-            bird = BirdReference.objects.get(sci_name__exact=sci_name).bird
+            bird = BirdReference.objects.get_with_related().get(sci_name__exact=sci_name).bird
             return bird
         except BirdReference.DoesNotExist:
             pass
@@ -52,7 +52,7 @@ class BirdAccess:
 
         # See if Bird already exists, if so, then create new BirdReference
         try:
-            bird = Bird.objects.get(sci_name__iexact=data.sci_name)
+            bird = Bird.objects.get_with_related().get(sci_name__iexact=data.sci_name)
             BirdReference.objects.get_or_create(sci_name=sci_name,
                                                 bird=bird
                                                )
@@ -69,12 +69,12 @@ class BirdAccess:
                 genus = Genus.objects.get_or_create(name=data.genus)[0]
 
                 # Create a new bird object
-                bird = Bird.objects.get_or_create(name=",".join(data.common_names),
-                                                  sci_name=data.sci_name,
-                                                  genus=genus,
-                                                  color=data.color,
-                                                  size=data.get_size_avg(),
-                                                 )[0]
+                bird = Bird.objects.get_with_related().get_or_create(name=",".join(data.common_names),
+                                                                     sci_name=data.sci_name,
+                                                                     genus=genus,
+                                                                     color=data.color,
+                                                                     size=data.get_size_avg(),
+                                                                    )[0]
 
                 web_data = WebData.objects.get_or_create(bird=bird,
                                          img=extra.img,
@@ -116,3 +116,8 @@ class BirdAccess:
                 return birds, False
 
         return birds, True
+
+    @classmethod
+    def get_by_ids(cls, ids):
+        """ Returns a QuerySet of Birds when given their ids """
+        return Bird.objects.get_with_related().filter(id__in=ids)

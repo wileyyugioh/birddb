@@ -10,8 +10,6 @@ from .birdranker import SearchData
 from .birdsearch import BirdSearcher
 from .scrape.colornames import SIMPLIFIED_COLORS_NAMES
 
-from time import time
-
 
 # THERE CAN BE ONLY ONE!
 bs = BirdSearcher()
@@ -39,7 +37,7 @@ def bird_ranks(request):
 
     try:
         bird_rankings = bs.search(sd)
-        return render(request, "birddb/bird_ranks.html", {"bird_ranks": bird_rankings[:MAX_SIZE], "COLOR_NAMES": SIMPLIFIED_COLORS_NAMES})
+        return render(request, "birddb/bird_ranks.html", {"bird_ranks": [bird[0] for bird in bird_rankings[:MAX_SIZE]], "COLOR_NAMES": SIMPLIFIED_COLORS_NAMES})
     except TooLongError:
         # Took too long, so show error page
         return redirect("birddb:bird_error")

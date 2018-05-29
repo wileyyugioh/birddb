@@ -86,7 +86,7 @@ class SimilarColors:
         # DEFINITELY NOT THREAD SAFE!
         if a not in self._cache:
             scores = [None] * len(SIMPLIFIED_COLORS_NAMES)
-            for color, i in enumerate(SIMPLIFIED_COLORS_NAMES):
+            for i, color in enumerate(SIMPLIFIED_COLORS_NAMES):
                 scores[i] = (color, color_distance(a, color))
 
             # ignore duplicate

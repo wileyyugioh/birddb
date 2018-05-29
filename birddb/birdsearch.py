@@ -11,15 +11,15 @@ class BirdSearcher:
         self._bgc = BirdGeoCache()
         self._br = BirdRanker()
 
-    def search(self, sd, with_score=False):
+    def search(self, sd):
         """ Searches the databases for most likely birds """
         # Assume search data already verified
         bird_data = self._bgc.get(sd.lat, sd.lon)
 
         # Get each bird's ranking
-        rankings = self._br.batch_rank(sd, bird_data)
+        rankings = self._br.batch_rank(sd, bird_data[0], bird_data[1])
 
         # Sort the rankings from highest to lowest
         rankings.sort(key=lambda tup: tup[1], reverse=True)
 
-        return rankings if with_score else [pair[0] for pair in rankings]
+        return rankings

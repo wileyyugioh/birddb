@@ -72,17 +72,16 @@ class BirdRanker:
 
         return BirdRanker._score(sd, color, size, frequency)
 
-    def batch_rank(self, sd, complete):
+    def batch_rank(self, sd, all_birds, all_freqs):
         """ Batch ranks, hopefully caching Django queries """
-        size = len(complete)
+        size = len(all_birds)
         full = [None] * size
-        for i in range(size):
-            color = complete[i][0].get_color
+        for i, bird in enumerate(all_birds):
+            color = bird.get_color
             if color:
-                size = complete[i][0].get_size
-                score = BirdRanker._score(sd, color, size, complete[i][1])
+                size = bird.get_size
+                score = BirdRanker._score(sd, color, size, all_freqs[i])
             else:
                 score = 0
-
-            full[i] = (complete[i][0], score)
+            full[i] = (bird, score)
         return full
