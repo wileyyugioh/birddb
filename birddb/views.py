@@ -57,13 +57,13 @@ def bird_poll(request, bird_id):
     try:
         color = request.POST["color"]
     except KeyError:
-        return HttpResponseBadRequest("Error, missing data")
+        pass
+    else:
+        # Validation code in BirdPoll
+        BirdPoll.vote(bird_id, color)
 
-    # Validation code in BirdPoll
-    if BirdPoll.vote(bird_id, color):
-        return HttpResponse("")
-
-    return HttpResponseBadRequest("")
+    # 204 code prevents redirecting!
+    return HttpResponse(status=204)
 
 
 def bird_partial(request):

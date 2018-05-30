@@ -7,7 +7,7 @@
     </div>
     <div class="bird-error-bottom">
         <span class="bird-error-center"><div class="bird-error-report" style="display: none;"><a>Report an Error</a></div></span>
-        <form class="bird-error" action="{% url 'birddb:bird_poll' bird.id %}" method="post" target="dummy" style="display: none;">
+        <form class="bird-error" action="{% url 'birddb:bird_poll' bird.id %}" method="post" style="display: none;">
             {% csrf_token %}
             <span>But in reality it's actually:</span>
             <div>
