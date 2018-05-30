@@ -88,7 +88,6 @@ function main() {
     showSearch();
     search_dom.checked = true;
     search_dom.disabled = false;
-    search_dom.parentNode.style.display = "";
 
     search_dom.addEventListener("click", function() {
         showSearch();

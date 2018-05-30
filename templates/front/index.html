@@ -11,7 +11,7 @@
         <label>
             <input type="radio" name="search-type" value="latlon" id="latlon" checked="checked"><span class="round">Coordinates</span>
         </label>
-        <label style="display: none;">
+        <label class="hide-no-js">
             <input type="radio" name="search-type" value="search" id="search" disabled><span class="round">Search</span>
         </label>
     </div>
@@ -20,7 +20,7 @@
         <input type="text" id="form-lat" name="lat" placeholder="Lat." maxlength="10" autocomplete="off" required>
         <input type="text" id="form-lon" name="lon" placeholder="Lon." maxlength="10" autocomplete="off" required>
     </div>
-    <div class="form-text form-search" style="display: none;">
+    <div class="form-text form-search hide-no-js">
         <input type="text" id="form-search" placeholder="Search for a location" maxlength="40" autocomplete="off">
         <div id="dropdown" class="dropdown-container"></div>
     </div>

@@ -10,7 +10,6 @@ function form_main() {
     var bird_error = document.getElementsByClassName("bird-error");
     for(var i = 0; i < bird_error.length; i++) {
         // add listener to form submit
-        bird_error[i].style.display = "";
         bird_error[i].addEventListener("submit", disableForm, false);
     }
 }

@@ -11,3 +11,10 @@ Enable Template Caching
 Set up other database
 
 ???
+
+## A quick guide for quick set up (don't run on prod. before doing above steps)
+
+```
+python manage.py createcachetable
+python manage.py collectstatic
+```

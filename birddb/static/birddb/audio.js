@@ -29,7 +29,7 @@ function audio_main() {
         // create audio player
         var audio_player = document.createElement("audio")
         audio_player.controls = false;
-        audio_player.preload = true;
+        audio_player.preload = "none";
         audio_player.src = container.dataset.audiosrc;
 
         container.appendChild(audio_player);

@@ -13,7 +13,6 @@ function form_main() {
     for(var i = 0; i < bird_error.length; i++) {
         // add listener to form submit
         bird_error[i].addEventListener("submit", disableForm, true);
-        bird_report[i].style.display = "";
 
         // add error form to report button
         bird_report[i].error_form = bird_error[i];

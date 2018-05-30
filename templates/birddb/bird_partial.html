@@ -7,7 +7,7 @@
 <noscript>
     <i class="bird-error-no-js">Please enable JavaScript to submit an error report</i>
 </noscript>
-<form class="bird-error" action="{% url 'birddb:bird_poll' bird.id %}" method="post" style="display: none;">
+<form class="bird-error hide-no-js" action="{% url 'birddb:bird_poll' bird.id %}" method="post">
     {% csrf_token %}
     <span>The color of the bird is:</span>
     <div>

@@ -35,7 +35,7 @@
             <td>
                 {% if bird.webdata.call %}
                 <!-- Manually enable our custom audio player using JavaScript! -->
-                <a class="bird-call audio-button audio-play" style="display: none;"></a>
+                <a class="bird-call audio-button audio-play hide-no-js"></a>
                 <div class="audio-player-container" data-audiosrc="{{ bird.webdata.call }}"></div>
                 <noscript>
                     <audio preload="none" controls>
