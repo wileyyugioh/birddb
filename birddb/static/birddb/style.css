@@ -18,6 +18,15 @@ a {
     margin: 0rem;
 }
 
+.top-center * {
+    margin: 0rem;
+}
+
+.top-center a {
+    font-size: 1.2rem;
+    text-decoration: underline;
+}
+
 .bird-table-container {
     overflow-x: auto;
 }

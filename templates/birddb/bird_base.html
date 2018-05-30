@@ -57,6 +57,10 @@
         {% endfor %}
     </table>
 </div>
+<div class="top-center">
+    <h2>Only birds spotted in the past month are shown</h2>
+    <a href="{% url 'front:index' %}">Try another search?</a>
+</div>
 {% else %}
 {% block birdempty %}{% endblock %}
 {% endif %}

@@ -9,6 +9,10 @@
     max-width: 80%;
 }
 
+.no-bottom {
+    margin-bottom: 0rem;
+}
+
 .legal {
     white-space: pre-wrap;
     margin: 1rem 5%;
@@ -19,6 +23,12 @@
 .legal-title {
     margin-top: 3rem;
     font-family: Times New Roman;
+}
+
+.about-text {
+    font-size: 1.2rem;
+    display: inline-block;
+    margin-top: 0rem;
 }
 
 h1, .bird-form div, .bird-form input[type="submit"] {
