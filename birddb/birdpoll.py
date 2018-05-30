@@ -10,7 +10,7 @@ class BirdPoll:
     def verify(bird_id, color):
         """ Verify the data """
         try:
-            bird = Bird.objects.get(pk=bird_id)
+            bird = Bird.objects.prefetch_related("birdpollcolor_set").get(pk=bird_id)
         except Bird.DoesNotExist:
             return False
 

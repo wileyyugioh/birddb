@@ -19,20 +19,15 @@ function doEnd() {
 
 function audio_main() {
     var players = document.getElementsByClassName("audio-player");
+    var buttons = document.getElementsByClassName("audio-button")
 
     // assumes 1 audio control for every audio player
     for(var i = 0; i < players.length; i++) {
-        // create the new button
-        var audio_button = document.createElement("a");
-        audio_button.className = "bird-call audio-button audio-play";
-
         var audio_player = players[i];
+        var audio_button = buttons[i];
 
-        // add it to the html
-        audio_player.parentNode.insertBefore(audio_button, audio_player.parentNode.firstChild);
-
-        // remove default behavior
-        audio_player.controls = false;
+        // enable the button
+        audio_button.style.display = "";
 
         // add player to controls and vice versa
         audio_button.player = audio_player;

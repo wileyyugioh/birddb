@@ -11,7 +11,8 @@
         <label>
             <input type="radio" name="search-type" value="latlon" id="latlon" checked="checked"><span class="round">Coordinates</span>
         </label>
-        <label style="display: none;"><input type="radio" name="search-type" value="search" id="search" disabled><span class="round">Search</span>
+        <label style="display: none;">
+            <input type="radio" name="search-type" value="search" id="search" disabled><span class="round">Search</span>
         </label>
     </div>
 <form id="bird-form" class="bird-form" action="{% url 'birddb:bird_ranks' %}" method="get">

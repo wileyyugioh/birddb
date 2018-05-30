@@ -74,7 +74,7 @@ h2, .location-bar label span {
 .location-bar {
     display: flex;
     width: 30.35rem;
-    justify-content: space-between;
+    justify-content: center;
     margin: 1rem auto;
     text-align: center;
 }
@@ -83,6 +83,7 @@ h2, .location-bar label span {
     display: inline-block;
     width: 12rem;
     cursor: pointer;
+    margin: 0rem 3.1rem;
 }
 
 .location-bar input[type="radio"] ~ span {
