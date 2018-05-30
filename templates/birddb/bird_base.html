@@ -36,13 +36,10 @@
                 {% if bird.webdata.call %}
                 <!-- Manually enable our custom audio player using JavaScript! -->
                 <a class="bird-call audio-button audio-play" style="display: none;"></a>
-                <audio class="audio-player" preload="none">
-                        <source src="{{ bird.webdata.call }}" type="audio/mp3">
-                </audio>
+                <div class="audio-player-container" data-audiosrc="{{ bird.webdata.call }}"></div>
                 <noscript>
-                    <!-- Backup player if no JS enabled -->
-                    <audio class="audio-player" preload="none" controls>
-                        <source src="{{ bird.webdata.call }}" type="audio/mp3">
+                    <audio preload="none" controls>
+                            <source src="{{ bird.webdata.call }}" type="audio/mp3">
                     </audio>
                 </noscript>
                 <div class="citation">

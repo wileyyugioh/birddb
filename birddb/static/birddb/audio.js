@@ -18,13 +18,21 @@ function doEnd() {
 }
 
 function audio_main() {
-    var players = document.getElementsByClassName("audio-player");
+    var containers = document.getElementsByClassName("audio-player-container");
     var buttons = document.getElementsByClassName("audio-button")
 
     // assumes 1 audio control for every audio player
-    for(var i = 0; i < players.length; i++) {
-        var audio_player = players[i];
+    for(var i = 0; i < containers.length; i++) {
+        var container = containers[i];
         var audio_button = buttons[i];
+
+        // create audio player
+        var audio_player = document.createElement("audio")
+        audio_player.controls = false;
+        audio_player.preload = true;
+        audio_player.src = container.dataset.audiosrc;
+
+        container.appendChild(audio_player);
 
         // enable the button
         audio_button.style.display = "";
